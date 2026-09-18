@@ -32,6 +32,9 @@ Flow:
 
 import logging
 import os
+from pathlib import Path
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 from typing import Any, Dict, List
 
 from fastapi import FastAPI, HTTPException
@@ -297,13 +300,14 @@ def extract_assistant_text(completion: Any) -> str:
 # 10. ROOT ENDPOINT
 # =====================================================================
 
+# Project root directory
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+
 @app.get("/")
-def read_root() -> Dict[str, str]:
-    """Simple status check to confirm the server is running."""
-    return {
-        "status": "online",
-        "message": "CareerPath AI backend is running",
-    }
+def read_root():
+    """Serve the CareerPath AI frontend."""
+    return FileResponse(BASE_DIR / "index.html")
 
 
 # =====================================================================
@@ -417,6 +421,12 @@ def chat(request: ChatRequest) -> ChatResponse:
 # =====================================================================
 # 13. LOCAL DEVELOPMENT ENTRYPOINT
 # =====================================================================
+  # Serve frontend HTML, CSS, JavaScript and other assets
+app.mount(
+    "/",
+    StaticFiles(directory=BASE_DIR, html=True),
+    name="frontend",
+)
 
 if __name__ == "__main__":
     import uvicorn
