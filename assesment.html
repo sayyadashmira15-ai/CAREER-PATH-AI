@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Career Assessment — CareerPath AI</title>
+  <meta name="description" content="Answer 10 short questions about your interests, strengths and preferred career direction to personalize your career guidance." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+</head>
+
+<body class="bg-slate-50 font-sans text-slate-800 antialiased">
+
+  <!-- ================= NAVBAR ================= -->
+  <header class="sticky top-0 z-50 border-b border-slate-200 bg-white">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex h-16 items-center justify-between">
+
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center gap-2.5 rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-indigo-600">
+          <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-indigo-600 text-white">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="9" />
+              <path d="M15.6 8.4 13.5 13.5 8.4 15.6l2.1-5.1 5.1-2.1Z" />
+            </svg>
+          </span>
+          <span class="text-lg font-bold tracking-tight text-slate-900">
+            CareerPath <span class="text-indigo-600">AI</span>
+          </span>
+        </a>
+
+        <!-- Desktop nav -->
+        <nav class="hidden items-center gap-8 md:flex" aria-label="Main navigation">
+          <a href="index.html" class="text-sm font-medium text-slate-600 transition-colors hover:text-indigo-600">Home</a>
+          <a href="assessment.html" class="text-sm font-medium text-indigo-600 transition-colors hover:text-indigo-700" aria-current="page">Assessment</a>
+          <a href="dashboard.html" class="text-sm font-medium text-slate-600 transition-colors hover:text-indigo-600">My Career</a>
+          <a href="roadmap.html" class="text-sm font-medium text-slate-600 transition-colors hover:text-indigo-600">Roadmap</a>
+          <a href="counselor.html" class="text-sm font-medium text-slate-600 transition-colors hover:text-indigo-600">AI Counselor</a>
+        </nav>
+
+        <!-- Desktop CTA -->
+        <div class="hidden md:block">
+          <a href="profile.html"
+             class="inline-flex items-center justify-center rounded-lg bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-indigo-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+            Profile
+          </a>
+        </div>
+
+        <!-- Mobile menu button -->
+        <button id="menu-btn" type="button"
+                class="inline-flex items-center justify-center rounded-lg p-2 text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 md:hidden"
+                aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle navigation menu">
+          <svg id="icon-open" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
+          <svg id="icon-close" class="hidden h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6 6l12 12M18 6 6 18" />
+          </svg>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden border-t border-slate-200 bg-white md:hidden">
+      <nav class="mx-auto max-w-7xl space-y-1 px-4 py-4 sm:px-6" aria-label="Mobile navigation">
+        <a href="index.html" class="block rounded-lg px-3 py-2.5 text-base font-medium text-slate-700 hover:bg-slate-50">Home</a>
+        <a href="assessment.html" class="block rounded-lg px-3 py-2.5 text-base font-medium text-indigo-600 hover:bg-indigo-50">Assessment</a>
+        <a href="dashboard.html" class="block rounded-lg px-3 py-2.5 text-base font-medium text-slate-700 hover:bg-slate-50">My Career</a>
+        <a href="roadmap.html" class="block rounded-lg px-3 py-2.5 text-base font-medium text-slate-700 hover:bg-slate-50">Roadmap</a>
+        <a href="counselor.html" class="block rounded-lg px-3 py-2.5 text-base font-medium text-slate-700 hover:bg-slate-50">AI Counselor</a>
+        <a href="profile.html"
+           class="mt-3 flex items-center justify-center rounded-lg bg-indigo-600 px-5 py-3 text-base font-semibold text-white transition-colors hover:bg-indigo-700">
+          Profile
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ================= PAGE HEADER ================= -->
+    <section class="border-b border-slate-200 bg-white">
+      <div class="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-14 lg:px-8">
+
+        <nav aria-label="Breadcrumb">
+          <ol class="flex items-center gap-2 text-sm text-slate-500">
+            <li><a href="index.html" class="transition-colors hover:text-indigo-600">Home</a></li>
+            <li aria-hidden="true">/</li>
+            <li class="font-medium text-slate-700" aria-current="page">Assessment</li>
+          </ol>
+        </nav>
+
+        <h1 class="mt-5 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+          Career Assessment
+        </h1>
+        <p class="mt-4 text-base leading-relaxed text-slate-600">
+          Answer honestly to help us understand your interests, strengths and preferred career direction.
+        </p>
+
+        <!-- ---------- PROGRESS ---------- -->
+        <div class="mt-8">
+          <div class="flex items-center justify-between gap-4">
+            <span class="text-sm font-semibold text-slate-900">Assessment Progress</span>
+            <span id="progress-text" class="text-sm font-semibold text-indigo-600" aria-live="polite">Question 1 of 10</span>
+          </div>
+
+          <div id="progress-track"
+               class="mt-3 h-2 w-full overflow-hidden rounded-full bg-slate-100"
+               role="progressbar"
+               aria-label="Assessment progress"
+               aria-valuemin="1"
+               aria-valuemax="10"
+               aria-valuenow="1">
+            <div id="progress-bar" class="h-full w-[10%] rounded-full bg-indigo-600 transition-[width] duration-300 ease-out"></div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= ASSESSMENT FORM ================= -->
+    <section class="mx-auto max-w-3xl px-4 py-10 sm:px-6 sm:py-12 lg:px-8">
+
+      <!--
+        The form action is kept for graceful fallback, but the submit
+        handler below always prevents the native submission, runs the
+        client-side scoring, saves the result to localStorage, and then
+        navigates to dashboard.html.
+      -->
+      <form id="assessment-form" action="dashboard.html" method="get" novalidate>
+
+        <!-- ---------- QUESTION 1 ---------- -->
+        <fieldset class="question" data-question="1">
+          <legend class="sr-only">Question 1 of 10</legend>
+          <div class="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8">
+
+            <p class="text-xs font-semibold uppercase tracking-wider text-indigo-600">Question 1</p>
+            <h2 data-question-heading tabindex="-1"
+                class="mt-2 text-lg font-semibold text-slate-900 focus:outline-none sm:text-xl">
+              What type of work do you enjoy the most?
+            </h2>
+
+            <div class="mt-6 space-y-3">
+
+              <label class="group flex cursor-pointer items-start gap-3.5 rounded-xl border border-slate-200 bg-white p-4 transition-colors hover:border-indigo-300 hover:bg-indigo-50/40 has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-indigo-600">
+                <input type="radio" name="q1" value="Building websites and applications" class="sr-only" />
+                <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 border-slate-300 bg-white transition-colors group-has-[:checked]:border-indigo-600">
+                  <span class="h-2.5 w-2.5 rounded-full bg-indigo-600 opacity-0 transition-opacity group-has-[:checked]:opacity-100"></span>
+                </span>
+                <span class="text-sm font-medium leading-relaxed text-slate-700 group-has-[:checked]:text-indigo-900">Building websites and applications</span>
+              </label>
+
+              <label class="group flex cursor-pointer items-start gap-3.5 rounded-xl border border-slate-200 bg-white p-4 transition-colors hover:border-indigo-300 hover:bg-indigo-50/40 has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-indigo-600">
+                <input type="radio" name="q1" value="Working with AI and intelligent systems" class="sr-only" />
+                <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 border-slate-300 bg-white transition-colors group-has-[:checked]:border-indigo-600">
+                  <span class="h-2.5 w-2.5 rounded-full bg-indigo-600 opacity-0 transition-opacity group-has-[:checked]:opacity-100"></span>
+                </span>
+                <span class="text-sm font-medium leading-relaxed text-slate-700 group-has-[:checked]:text-indigo-900">Working with AI and intelligent systems</span>
+              </label>
+
+              <label class="group flex cursor-pointer items-start gap-3.5 rounded-xl border border-slate-200 bg-white p-4 transition-colors hover:border-indigo-300 hover:bg-indigo-50/40 has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-indigo-600">
+                <input type="radio" name="q1" value="Analyzing data and finding patterns" class="sr-only" />
+                <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 border-slate-300 bg-white transition-colors group-has-[:checked]:border-indigo-600">
+                  <span class="h-2.5 w-2.5 rounded-full bg-indigo-600 opacity-0 transition-opacity group-has-[:checked]:opacity-100"></span>
+                </span>
+                <span class="text-sm font-medium leading-relaxed text-slate-700 group-has-[:checked]:text-indigo-900">Analyzing data and finding patterns</span>
+              </label>
+
+              <label class="group flex cursor-pointer items-start gap-3.5 rounded-xl border border-slate-200 bg-white p-4 transition-colors hover:border-indigo-300 hover:bg-indigo-50/40 has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-indigo-600">
+                <input type="radio" name="q1" value="Protecting systems and networks" class="sr-only" />
+                <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 border-slate-300 bg-white transition-colors group-has-[:checked]:border-indigo-600">
+                  <span class="h-2.5 w-2.5 rounded-full bg-indigo-600 opacity-0 transition-opacity group-has-[:checked]:opacity-100"></span>
+                </span>
+                <span class="text-sm font-medium leading-relaxed text-slate-700 group-has-[:checked]:text-indigo-900">Protecting systems and networks</span>
+              </label>
+
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- ---------- QUESTION 2 ---------- -->
+        <fieldset class="question hidden" data-question="2">
+          <legend class="sr-only">Question 2 of 10</legend>
+          <div class="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8">
+
+            <p class="text-xs font-semibold uppercase tracking-wider text-indigo-600">Question 2</p>
+            <h2 data-question-heading tabindex="-1"
+                class="mt-2 text-lg font-semibold text-slate-900 focus:outline-none sm:text-xl">
+              How comfortable are you with programming?
+            </h2>
+
+            <div class="mt-6 space-y-3">
+
+              <label class="group flex cursor-pointer items-start gap-3.5 rounded-xl border border-slate-200 bg-white p-4 transition-colors hover:border-indigo-300 hover:bg-indigo-50/40 has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-indigo-600">
+                <input type="radio" name="q2" value="Beginner" class="sr-only" />
+                <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 border-slate-300 bg-white transition-colors group-has-[:checked]:border-indigo-600">
+                  <span class="h-2.5 w-2.5 rounded-full bg-indigo-600 opacity-0 transition-opacity group-has-[:checked]:opacity-100"></span>
+                </span>
+                <span class="text-sm font-medium leading-relaxed text-slate-700 group-has-[:checked]:text-indigo-900">Beginner</span>
+              </label>
+
+              <label class="group flex cursor-pointer items-start gap-3.5 rounded-xl border border-slate-200 bg-white p-4 transition-colors hover:border-indigo-300 hover:bg-indigo-50/40 has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-indigo-600">
+                <input type="radio" name="q2" value="Basic" class="sr-only" />
+                <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 border-slate-300 bg-white transition-colors group-has-[:checked]:border-indigo-600">
+                  <span class="h-2.5 w-2.5 rounded-full bg-indigo-600 opacity-0 transition-opacity group-has-[:checked]:opacity-100"></span>
+                </span>
+                <span class="text-sm font-medium leading-relaxed text-slate-700 group-has-[:checked]:text-indigo-900">Basic</span>
+              </label>
+
+              <label class="group flex cursor-pointer items-start gap-3.5 rounded-xl border border-slate-200 bg-white p-4 transition-colors hover:border-indigo-300 hover:bg-indigo-50/40 has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-indigo-600">
+                <input type="radio" name="q2" value="Intermediate" class="sr-only" />
+                <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 border-slate-300 bg-white transition-colors group-has-[:checked]:border-indigo-600">
+                  <span class="h-2.5 w-2.5 rounded-full bg-indigo-600 opacity-0 transition-opacity group-has-[:checked]:opacity-100"></span>
+                </span>
+                <span class="text-sm font-medium leading-relaxed text-slate-700 group-has-[:checked]:text-indigo-900">Intermediate</span>
+              </label>
+
+              <label class="group flex cursor-pointer items-start gap-3.5 rounded-xl border border-slate-200 bg-white p-4 transition-colors hover:border-indigo-300 hover:bg-indigo-50/40 has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-indigo-600">
+                <input type="radio" name="q2" value="Advanced" class="sr-only" />
+                <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 border-slate-300 bg-white transition-colors group-has-[:checked]:border-indigo-600">
+                  <span class="h-2.5 w-2.5 rounded-full bg-indigo-600 opacity-0 transition-opacity group-has-[:checked]:opacity-100"></span>
+                </span>
+                <span class="text-sm font-medium leading-relaxed text-slate-700 group-has-[:checked]:text-indigo-900">Advanced</span>
+              </label>
+
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- ---------- QUESTION 3 ---------- -->
+        <fieldset class="question hidden" data-question="3">
+          <legend class="sr-only">Question 3 of 10</legend>
+          <div class="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8">
+
+            <p class="text-xs font-semibold uppercase tracking-wider text-indigo-600">Question 3</p>
+            <h2 data-question-heading tabindex="-1"
+                class="mt-2 text-lg font-semibold text-slate-900 focus:outline-none sm:text-xl">
+              How do you feel about mathematics and statistics?
+            </h2>
+
+            <div class="mt-6 space-y-3">
+
+              <label class="group flex cursor-pointer items-start gap-3.5 rounded-xl border border-slate-200 bg-white p-4 transition-colors hover:border-indigo-300 hover:bg-indigo-50/40 has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-indigo-600">
+                <input type="radio" name="q3" value="I enjoy them" class="sr-only" />
+                <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 border-slate-300 bg-white transition-colors group-has-[:checked]:border-indigo-600">
+                  <span class="h-2.5 w-2.5 rounded-full bg-indigo-600 opacity-0 transition-opacity group-has-[:checked]:opacity-100"></span>
+                </span>
+                <span class="text-sm font-medium leading-relaxed text-slate-700 group-has-[:checked]:text-indigo-900">I enjoy them</span>
+              </label>
+
+              <label class="group flex cursor-pointer items-start gap-3.5 rounded-xl border border-slate-200 bg-white p-4 transition-colors hover:border-indigo-300 hover:bg-indigo-50/40 has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-indigo-600">
+                <input type="radio" name="q3" value="I am comfortable with them" class="sr-only" />
+                <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 border-slate-300 bg-white transition-colors group-has-[:checked]:border-indigo-600">
+                  <span class="h-2.5 w-2.5 rounded-full bg-indigo-600 opacity-0 transition-opacity group-has-[:checked]:opacity-100"></span>
+                </span>
+                <span class="text-sm font-medium leading-relaxed text-slate-700 group-has-[:checked]:text-indigo-900">I am comfortable with them</span>
+              </label>
+
+              <label class="group flex cursor-pointer items-start gap-3.5 rounded-xl border border-slate-200 bg-white p-4 transition-colors hover:border-indigo-300 hover:bg-indigo-50/40 has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-indigo-600">
+                <input type="radio" name="q3" value="I can manage them" class="sr-only" />
+                <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 border-slate-300 bg-white transition-colors group-has-[:checked]:border-indigo-600">
+                  <span class="h-2.5 w-2.5 rounded-full bg-indigo-600 opacity-0 transition-opacity group-has-[:checked]:opacity-100"></span>
+                </span>
+                <span class="text-sm font-medium leading-relaxed text-slate-700 group-has-[:checked]:text-indigo-900">I can manage them</span>
+              </label>
+
+              <label class="group flex cursor-pointer items-start gap-3.5 rounded-xl border border-slate-200 bg-white p-4 transition-colors hover:border-indigo-300 hover:bg-indigo-50/40 has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-indigo-600">
+                <input type="radio" name="q3" value="I find them difficult" class="sr-only" />
+                <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 border-slate-300 bg-white transition-colors group-has-[:checked]:border-indigo-600">
+                  <span class="h-2.5 w-2.5 rounded-full bg-indigo-600 opacity-0 transition-opacity group-has-[:checked]:opacity-100"></span>
+                </span>
+                <span class="text-sm font-medium leading-relaxed text-slate-700 group-has-[:checked]:text-indigo-900">I find them difficult</span>
+              </label>
+
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- ---------- QUESTION 4 ---------- -->
+        <fieldset class="question hidden" data-question="4">
+          <legend class="sr-only">Question 4 of 10</legend>
+          <div class="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8">
+
+            <p class="text-xs font-semibold uppercase tracking-wider text-indigo-600">Question 4</p>
+            <h2 data-question-heading tabindex="-1"
+                class="mt-2 text-lg font-semibold text-slate-900 focus:outline-none sm:text-xl">
+              What kind of problems do you enjoy solving?
+            </h2>
+
+            <div class="mt-6 space-y-3">
+
+              <label class="group flex cursor-pointer items-start gap-3.5 rounded-xl border border-slate-200 bg-white p-4 transition-colors hover:border-indigo-300 hover:bg-indigo-50/40 has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-indigo-600">
+                <input type="radio" name="q4" value="Coding and software problems" class="sr-only" />
+                <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 border-slate-300 bg-white transition-colors group-has-[:checked]:border-indigo-600">
+                  <span class="h-2.5 w-2.5 rounded-full bg-indigo-600 opacity-0 transition-opacity group-has-[:checked]:opacity-100"></span>
+                </span>
+                <span class="text-sm font-medium leading-relaxed text-slate-700 group-has-[:checked]:text-indigo-900">Coding and software problems</span>
+              </label>
+
+              <label class="group flex cursor-pointer items-start gap-3.5 rounded-xl border border-slate-200 bg-white p-4 transition-colors hover:border-indigo-300 hover:bg-indigo-50/40 has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-indigo-600">
+                <input type="radio" name="q4" value="Data and analytical problems" class="sr-only" />
+                <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 border-slate-300 bg-white transition-colors group-has-[:checked]:border-indigo-600">
+                  <span class="h-2.5 w-2.5 rounded-full bg-indigo-600 opacity-0 transition-opacity group-has-[:checked]:opacity-100"></span>
+                </span>
+                <span class="text-sm font-medium leading-relaxed text-slate-700 group-has-[:checked]:text-indigo-900">Data and analytical problems</span>
+              </label>
+
+              <label class="group flex cursor-pointer items-start gap-3.5 rounded-xl border border-slate-200 bg-white p-4 transition-colors hover:border-indigo-300 hover:bg-indigo-50/40 has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-indigo-600">
+                <input type="radio" name="q4" value="Security and technical problems" class="sr-only" />
+                <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 border-slate-300 bg-white transition-colors group-has-[:checked]:border-indigo-600">
+                  <span class="h-2.5 w-2.5 rounded-full bg-indigo-600 opacity-0 transition-opacity group-has-[:checked]:opacity-100"></span>
+                </span>
+                <span class="text-sm font-medium leading-relaxed text-slate-700 group-has-[:checked]:text-indigo-900">Security and technical problems</span>
+              </label>
+
+              <label class="group flex cursor-pointer items-start gap-3.5 rounded-xl border border-slate-200 bg-white p-4 transition-colors hover:border-indigo-300 hover:bg-indigo-50/40 has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-indigo-600">
+                <input type="radio" name="q4" value="Creative and design problems" class="sr-only" />
+                <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 border-slate-300 bg-white transition-colors group-has-[:checked]:border-indigo-600">
+                  <span class="h-2.5 w-2.5 rounded-full bg-indigo-600 opacity-0 transition-opacity group-has-[:checked]:opacity-100"></span>
+                </span>
+                <span class="text-sm font-medium leading-relaxed text-slate-700 group-has-[:checked]:text-indigo-900">Creative and design problems</span>
+              </label>
+
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- ---------- QUESTION 5 ---------- -->
+        <fieldset class="question hidden" data-question="5">
+          <legend class="sr-only">Question 5 of 10</legend>
+          <div class="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8">
+
+            <p class="text-xs font-semibold uppercase tracking-wider text-indigo-600">Question 5</p>
+            <h2 data-question-heading tabindex="-1"
+                class="mt-2 text-lg font-semibold text-slate-900 focus:outline-none sm:text-xl">
+              Which activity sounds most interesting to you?
+            </h2>
+
+            <div class="mt-6 space-y-3">
+
+              <label class="group flex cursor-pointer items-start gap-3.5 rounded-xl border border-slate-200 bg-white p-4 transition-colors hover:border-indigo-300 hover:bg-indigo-50/40 has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-indigo-600">
+                <input type="radio" name="q5" value="Creating a website or web application" class="sr-only" />
+                <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 border-slate-300 bg-white transition-colors group-has-[:checked]:border-indigo-600">
+                  <span class="h-2.5 w-2.5 rounded-full bg-indigo-600 opacity-0 transition-opacity group-has-[:checked]:opacity-100"></span>
+                </span>
+                <span class="text-sm font-medium leading-relaxed text-slate-700 group-has-[:checked]:text-indigo-900">Creating a website or web application</span>
+              </label>
+
+              <label class="group flex cursor-pointer items-start gap-3.5 rounded-xl border border-slate-200 bg-white p-4 transition-colors hover:border-indigo-300 hover:bg-indigo-50/40 has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-indigo-600">
+                <input type="radio" name="q5" value="Training an AI/ML model" class="sr-only" />
+                <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 border-slate-300 bg-white transition-colors group-has-[:checked]:border-indigo-600">
+                  <span class="h-2.5 w-2.5 rounded-full bg-indigo-600 opacity-0 transition-opacity group-has-[:checked]:opacity-100"></span>
+                </span>
+                <span class="text-sm font-medium leading-relaxed text-slate-700 group-has-[:checked]:text-indigo-900">Training an AI/ML model</span>
+              </label>
+
+              <label class="group flex cursor-pointer items-start gap-3.5 rounded-xl border border-slate-200 bg-white p-4 transition-colors hover:border-indigo-300 hover:bg-indigo-50/40 has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-indigo-600">
+                <input type="radio" name="q5" value="Analyzing a dataset" class="sr-only" />
+                <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 border-slate-300 bg-white transition-colors group-has-[:checked]:border-indigo-600">
+                  <span class="h-2.5 w-2.5 rounded-full bg-indigo-600 opacity-0 transition-opacity group-has-[:checked]:opacity-100"></span>
+                </span>
+                <span class="text-sm font-medium leading-relaxed text-slate-700 group-has-[:checked]:text-indigo-900">Analyzing a dataset</span>
+              </label>
+
+              <label class="group flex cursor-pointer items-start gap-3.5 rounded-xl border border-slate-200 bg-white p-4 transition-colors hover:border-indigo-300 hover:bg-indigo-50/40 has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-indigo-600">
+                <input type="radio" name="q5" value="Finding vulnerabilities in a system" class="sr-only" />
+                <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 border-slate-300 bg-white transition-colors group-has-[:checked]:border-indigo-600">
+                  <span class="h-2.5 w-2.5 rounded-full bg-indigo-600 opacity-0 transition-opacity group-has-[:checked]:opacity-100"></span>
+                </span>
+                <span class="text-sm font-medium leading-relaxed text-slate-700 group-has-[:checked]:text-indigo-900">Finding vulnerabilities in a system</span>
+              </label>
+
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- ---------- QUESTION 6 ---------- -->
+        <fieldset class="question hidden" data-question="6">
+          <legend class="sr-only">Question 6 of 10</legend>
+          <div class="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8">
+
+            <p class="text-xs font-semibold uppercase tracking-wider text-indigo-600">Question 6</p>
+            <h2 data-question-heading tabindex="-1"
+                class="mt-2 text-lg font-semibold text-slate-900 focus:outline-none sm:text-xl">
+              How do you prefer to learn?
+            </h2>
+
+            <div class="mt-6 space-y-3">
+
+              <label class="group flex cursor-pointer items-start gap-3.5 rounded-xl border border-slate-200 bg-white p-4 transition-colors hover:border-indigo-300 hover:bg-indigo-50/40 has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-indigo-600">
+                <input type="radio" name="q6" value="Building projects" class="sr-only" />
+                <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 border-slate-300 bg-white transition-colors group-has-[:checked]:border-indigo-600">
+                  <span class="h-2.5 w-2.5 rounded-full bg-indigo-600 opacity-0 transition-opacity group-has-[:checked]:opacity-100"></span>
+                </span>
+                <span class="text-sm font-medium leading-relaxed text-slate-700 group-has-[:checked]:text-indigo-900">Building projects</span>
+              </label>
+
+              <label class="group flex cursor-pointer items-start gap-3.5 rounded-xl border border-slate-200 bg-white p-4 transition-colors hover:border-indigo-300 hover:bg-indigo-50/40 has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-indigo-600">
+                <input type="radio" name="q6" value="Watching tutorials and practicing" class="sr-only" />
+                <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 border-slate-300 bg-white transition-colors group-has-[:checked]:border-indigo-600">
+                  <span class="h-2.5 w-2.5 rounded-full bg-indigo-600 opacity-0 transition-opacity group-has-[:checked]:opacity-100"></span>
+                </span>
+                <span class="text-sm font-medium leading-relaxed text-slate-700 group-has-[:checked]:text-indigo-900">Watching tutorials and practicing</span>
+              </label>
+
+              <label class="group flex cursor-pointer items-start gap-3.5 rounded-xl border border-slate-200 bg-white p-4 transition-colors hover:border-indigo-300 hover:bg-indigo-50/40 has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-indigo-600">
+                <input type="radio" name="q6" value="Reading documentation" class="sr-only" />
+                <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 border-slate-300 bg-white transition-colors group-has-[:checked]:border-indigo-600">
+                  <span class="h-2.5 w-2.5 rounded-full bg-indigo-600 opacity-0 transition-opacity group-has-[:checked]:opacity-100"></span>
+                </span>
+                <span class="text-sm font-medium leading-relaxed text-slate-700 group-has-[:checked]:text-indigo-900">Reading documentation</span>
+              </label>
+
+              <label class="group flex cursor-pointer items-start gap-3.5 rounded-xl border border-slate-200 bg-white p-4 transition-colors hover:border-indigo-300 hover:bg-indigo-50/40 has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-indigo-600">
+                <input type="radio" name="q6" value="Solving challenges and experiments" class="sr-only" />
+                <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 border-slate-300 bg-white transition-colors group-has-[:checked]:border-indigo-600">
+                  <span class="h-2.5 w-2.5 rounded-full bg-indigo-600 opacity-0 transition-opacity group-has-[:checked]:opacity-100"></span>
+                </span>
+                <span class="text-sm font-medium leading-relaxed text-slate-700 group-has-[:checked]:text-indigo-900">Solving challenges and experiments</span>
+              </label>
+
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- ---------- QUESTION 7 ---------- -->
+        <fieldset class="question hidden" data-question="7">
+          <legend class="sr-only">Question 7 of 10</legend>
+          <div class="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8">
+
+            <p class="text-xs font-semibold uppercase tracking-wider text-indigo-600">Question 7</p>
+            <h2 data-question-heading tabindex="-1"
+                class="mt-2 text-lg font-semibold text-slate-900 focus:outline-none sm:text-xl">
+              What is your strongest skill?
+            </h2>
+
+            <div class="mt-6 space-y-3">
+
+              <label class="group flex cursor-pointer items-start gap-3.5 rounded-xl border border-slate-200 bg-white p-4 transition-colors hover:border-indigo-300 hover:bg-indigo-50/40 has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-indigo-600">
+                <input type="radio" name="q7" value="Logical thinking" class="sr-only" />
+                <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 border-slate-300 bg-white transition-colors group-has-[:checked]:border-indigo-600">
+                  <span class="h-2.5 w-2.5 rounded-full bg-indigo-600 opacity-0 transition-opacity group-has-[:checked]:opacity-100"></span>
+                </span>
+                <span class="text-sm font-medium leading-relaxed text-slate-700 group-has-[:checked]:text-indigo-900">Logical thinking</span>
+              </label>
+
+              <label class="group flex cursor-pointer items-start gap-3.5 rounded-xl border border-slate-200 bg-white p-4 transition-colors hover:border-indigo-300 hover:bg-indigo-50/40 has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-indigo-600">
+                <input type="radio" name="q7" value="Creativity" class="sr-only" />
+                <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 border-slate-300 bg-white transition-colors group-has-[:checked]:border-indigo-600">
+                  <span class="h-2.5 w-2.5 rounded-full bg-indigo-600 opacity-0 transition-opacity group-has-[:checked]:opacity-100"></span>
+                </span>
+                <span class="text-sm font-medium leading-relaxed text-slate-700 group-has-[:checked]:text-indigo-900">Creativity</span>
+              </label>
+
+              <label class="group flex cursor-pointer items-start gap-3.5 rounded-xl border border-slate-200 bg-white p-4 transition-colors hover:border-indigo-300 hover:bg-indigo-50/40 has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-indigo-600">
+                <input type="radio" name="q7" value="Problem solving" class="sr-only" />
+                <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 border-slate-300 bg-white transition-colors group-has-[:checked]:border-indigo-600">
+                  <span class="h-2.5 w-2.5 rounded-full bg-indigo-600 opacity-0 transition-opacity group-has-[:checked]:opacity-100"></span>
+                </span>
+                <span class="text-sm font-medium leading-relaxed text-slate-700 group-has-[:checked]:text-indigo-900">Problem solving</span>
+              </label>
+
+              <label class="group flex cursor-pointer items-start gap-3.5 rounded-xl border border-slate-200 bg-white p-4 transition-colors hover:border-indigo-300 hover:bg-indigo-50/40 has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-indigo-600">
+                <input type="radio" name="q7" value="Communication" class="sr-only" />
+                <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 border-slate-300 bg-white transition-colors group-has-[:checked]:border-indigo-600">
+                  <span class="h-2.5 w-2.5 rounded-full bg-indigo-600 opacity-0 transition-opacity group-has-[:checked]:opacity-100"></span>
+                </span>
+                <span class="text-sm font-medium leading-relaxed text-slate-700 group-has-[:checked]:text-indigo-900">Communication</span>
+              </label>
+
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- ---------- QUESTION 8 ---------- -->
+        <fieldset class="question hidden" data-question="8">
+          <legend class="sr-only">Question 8 of 10</legend>
+          <div class="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8">
+
+            <p class="text-xs font-semibold uppercase tracking-wider text-indigo-600">Question 8</p>
+            <h2 data-question-heading tabindex="-1"
+                class="mt-2 text-lg font-semibold text-slate-900 focus:outline-none sm:text-xl">
+              Which career area interests you the most?
+            </h2>
+
+            <div class="mt-6 space-y-3">
+
+              <label class="group flex cursor-pointer items-start gap-3.5 rounded-xl border border-slate-200 bg-white p-4 transition-colors hover:border-indigo-300 hover:bg-indigo-50/40 has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-indigo-600">
+                <input type="radio" name="q8" value="Artificial Intelligence / Machine Learning" class="sr-only" />
+                <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 border-slate-300 bg-white transition-colors group-has-[:checked]:border-indigo-600">
+                  <span class="h-2.5 w-2.5 rounded-full bg-indigo-600 opacity-0 transition-opacity group-has-[:checked]:opacity-100"></span>
+                </span>
+                <span class="text-sm font-medium leading-relaxed text-slate-700 group-has-[:checked]:text-indigo-900">Artificial Intelligence / Machine Learning</span>
+              </label>
+
+              <label class="group flex cursor-pointer items-start gap-3.5 rounded-xl border border-slate-200 bg-white p-4 transition-colors hover:border-indigo-300 hover:bg-indigo-50/40 has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-indigo-600">
+                <input type="radio" name="q8" value="Full Stack Development" class="sr-only" />
+                <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 border-slate-300 bg-white transition-colors group-has-[:checked]:border-indigo-600">
+                  <span class="h-2.5 w-2.5 rounded-full bg-indigo-600 opacity-0 transition-opacity group-has-[:checked]:opacity-100"></span>
+                </span>
+                <span class="text-sm font-medium leading-relaxed text-slate-700 group-has-[:checked]:text-indigo-900">Full Stack Development</span>
+              </label>
+
+              <label class="group flex cursor-pointer items-start gap-3.5 rounded-xl border border-slate-200 bg-white p-4 transition-colors hover:border-indigo-300 hover:bg-indigo-50/40 has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-indigo-600">
+                <input type="radio" name="q8" value="Data Science" class="sr-only" />
+                <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 border-slate-300 bg-white transition-colors group-has-[:checked]:border-indigo-600">
+                  <span class="h-2.5 w-2.5 rounded-full bg-indigo-600 opacity-0 transition-opacity group-has-[:checked]:opacity-100"></span>
+                </span>
+                <span class="text-sm font-medium leading-relaxed text-slate-700 group-has-[:checked]:text-indigo-900">Data Science</span>
+              </label>
+
+              <label class="group flex cursor-pointer items-start gap-3.5 rounded-xl border border-slate-200 bg-white p-4 transition-colors hover:border-indigo-300 hover:bg-indigo-50/40 has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-indigo-600">
+                <input type="radio" name="q8" value="Cyber Security" class="sr-only" />
+                <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 border-slate-300 bg-white transition-colors group-has-[:checked]:border-indigo-600">
+                  <span class="h-2.5 w-2.5 rounded-full bg-indigo-600 opacity-0 transition-opacity group-has-[:checked]:opacity-100"></span>
+                </span>
+                <span class="text-sm font-medium leading-relaxed text-slate-700 group-has-[:checked]:text-indigo-900">Cyber Security</span>
+              </label>
+
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- ---------- QUESTION 9 ---------- -->
+        <fieldset class="question hidden" data-question="9">
+          <legend class="sr-only">Question 9 of 10</legend>
+          <div class="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8">
+
+            <p class="text-xs font-semibold uppercase tracking-wider text-indigo-600">Question 9</p>
+            <h2 data-question-heading tabindex="-1"
+                class="mt-2 text-lg font-semibold text-slate-900 focus:outline-none sm:text-xl">
+              How much time can you dedicate to learning each day?
+            </h2>
+
+            <div class="mt-6 space-y-3">
+
+              <label class="group flex cursor-pointer items-start gap-3.5 rounded-xl border border-slate-200 bg-white p-4 transition-colors hover:border-indigo-300 hover:bg-indigo-50/40 has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-indigo-600">
+                <input type="radio" name="q9" value="Less than 1 hour" class="sr-only" />
+                <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 border-slate-300 bg-white transition-colors group-has-[:checked]:border-indigo-600">
+                  <span class="h-2.5 w-2.5 rounded-full bg-indigo-600 opacity-0 transition-opacity group-has-[:checked]:opacity-100"></span>
+                </span>
+                <span class="text-sm font-medium leading-relaxed text-slate-700 group-has-[:checked]:text-indigo-900">Less than 1 hour</span>
+              </label>
+
+              <label class="group flex cursor-pointer items-start gap-3.5 rounded-xl border border-slate-200 bg-white p-4 transition-colors hover:border-indigo-300 hover:bg-indigo-50/40 has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-indigo-600">
+                <input type="radio" name="q9" value="1–2 hours" class="sr-only" />
+                <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 border-slate-300 bg-white transition-colors group-has-[:checked]:border-indigo-600">
+                  <span class="h-2.5 w-2.5 rounded-full bg-indigo-600 opacity-0 transition-opacity group-has-[:checked]:opacity-100"></span>
+                </span>
+                <span class="text-sm font-medium leading-relaxed text-slate-700 group-has-[:checked]:text-indigo-900">1–2 hours</span>
+              </label>
+
+              <label class="group flex cursor-pointer items-start gap-3.5 rounded-xl border border-slate-200 bg-white p-4 transition-colors hover:border-indigo-300 hover:bg-indigo-50/40 has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-indigo-600">
+                <input type="radio" name="q9" value="2–4 hours" class="sr-only" />
+                <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 border-slate-300 bg-white transition-colors group-has-[:checked]:border-indigo-600">
+                  <span class="h-2.5 w-2.5 rounded-full bg-indigo-600 opacity-0 transition-opacity group-has-[:checked]:opacity-100"></span>
+                </span>
+                <span class="text-sm font-medium leading-relaxed text-slate-700 group-has-[:checked]:text-indigo-900">2–4 hours</span>
+              </label>
+
+              <label class="group flex cursor-pointer items-start gap-3.5 rounded-xl border border-slate-200 bg-white p-4 transition-colors hover:border-indigo-300 hover:bg-indigo-50/40 has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-indigo-600">
+                <input type="radio" name="q9" value="More than 4 hours" class="sr-only" />
+                <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 border-slate-300 bg-white transition-colors group-has-[:checked]:border-indigo-600">
+                  <span class="h-2.5 w-2.5 rounded-full bg-indigo-600 opacity-0 transition-opacity group-has-[:checked]:opacity-100"></span>
+                </span>
+                <span class="text-sm font-medium leading-relaxed text-slate-700 group-has-[:checked]:text-indigo-900">More than 4 hours</span>
+              </label>
+
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- ---------- QUESTION 10 ---------- -->
+        <fieldset class="question hidden" data-question="10">
+          <legend class="sr-only">Question 10 of 10</legend>
+          <div class="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8">
+
+            <p class="text-xs font-semibold uppercase tracking-wider text-indigo-600">Question 10</p>
+            <h2 data-question-heading tabindex="-1"
+                class="mt-2 text-lg font-semibold text-slate-900 focus:outline-none sm:text-xl">
+              What is your main career goal?
+            </h2>
+
+            <div class="mt-6 space-y-3">
+
+              <label class="group flex cursor-pointer items-start gap-3.5 rounded-xl border border-slate-200 bg-white p-4 transition-colors hover:border-indigo-300 hover:bg-indigo-50/40 has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-indigo-600">
+                <input type="radio" name="q10" value="Get a software development job" class="sr-only" />
+                <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 border-slate-300 bg-white transition-colors group-has-[:checked]:border-indigo-600">
+                  <span class="h-2.5 w-2.5 rounded-full bg-indigo-600 opacity-0 transition-opacity group-has-[:checked]:opacity-100"></span>
+                </span>
+                <span class="text-sm font-medium leading-relaxed text-slate-700 group-has-[:checked]:text-indigo-900">Get a software development job</span>
+              </label>
+
+              <label class="group flex cursor-pointer items-start gap-3.5 rounded-xl border border-slate-200 bg-white p-4 transition-colors hover:border-indigo-300 hover:bg-indigo-50/40 has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-indigo-600">
+                <input type="radio" name="q10" value="Build a career in AI/ML" class="sr-only" />
+                <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 border-slate-300 bg-white transition-colors group-has-[:checked]:border-indigo-600">
+                  <span class="h-2.5 w-2.5 rounded-full bg-indigo-600 opacity-0 transition-opacity group-has-[:checked]:opacity-100"></span>
+                </span>
+                <span class="text-sm font-medium leading-relaxed text-slate-700 group-has-[:checked]:text-indigo-900">Build a career in AI/ML</span>
+              </label>
+
+              <label class="group flex cursor-pointer items-start gap-3.5 rounded-xl border border-slate-200 bg-white p-4 transition-colors hover:border-indigo-300 hover:bg-indigo-50/40 has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-indigo-600">
+                <input type="radio" name="q10" value="Work with data and analytics" class="sr-only" />
+                <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 border-slate-300 bg-white transition-colors group-has-[:checked]:border-indigo-600">
+                  <span class="h-2.5 w-2.5 rounded-full bg-indigo-600 opacity-0 transition-opacity group-has-[:checked]:opacity-100"></span>
+                </span>
+                <span class="text-sm font-medium leading-relaxed text-slate-700 group-has-[:checked]:text-indigo-900">Work with data and analytics</span>
+              </label>
+
+              <label class="group flex cursor-pointer items-start gap-3.5 rounded-xl border border-slate-200 bg-white p-4 transition-colors hover:border-indigo-300 hover:bg-indigo-50/40 has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-indigo-600">
+                <input type="radio" name="q10" value="Build a cybersecurity career" class="sr-only" />
+                <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 border-slate-300 bg-white transition-colors group-has-[:checked]:border-indigo-600">
+                  <span class="h-2.5 w-2.5 rounded-full bg-indigo-600 opacity-0 transition-opacity group-has-[:checked]:opacity-100"></span>
+                </span>
+                <span class="text-sm font-medium leading-relaxed text-slate-700 group-has-[:checked]:text-indigo-900">Build a cybersecurity career</span>
+              </label>
+
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- ---------- VALIDATION MESSAGE ---------- -->
+        <p id="form-error"
+           class="mt-6 hidden rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm font-medium text-red-700"
+           role="alert">
+          Please select an answer before continuing.
+        </p>
+
+        <!-- ---------- NAVIGATION ---------- -->
+        <div class="mt-8 flex flex-col-reverse gap-3 sm:flex-row sm:items-center sm:justify-between">
+
+          <button type="button" id="prev-btn"
+                  class="inline-flex items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-6 py-3.5 text-sm font-semibold text-slate-700 transition-colors hover:border-slate-400 hover:bg-slate-50 hover:text-slate-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:pointer-events-none disabled:opacity-40">
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M19 12H5M11 6l-6 6 6 6" />
+            </svg>
+            Previous
+          </button>
+
+          <button type="button" id="next-btn"
+                  class="inline-flex items-center justify-center gap-2 rounded-lg bg-indigo-600 px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-indigo-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+            Next
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M5 12h14M13 6l6 6-6 6" />
+            </svg>
+          </button>
+
+          <button type="submit" id="submit-btn"
+                  class="hidden items-center justify-center gap-2 rounded-lg bg-indigo-600 px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-indigo-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+            Analyze My Career
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M5 12h14M13 6l6 6-6 6" />
+            </svg>
+          </button>
+
+        </div>
+
+        <p class="mt-6 text-center text-sm text-slate-500">
+          Your answers are used only to personalize your career guidance.
+        </p>
+
+      </form>
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="bg-slate-900">
+    <div class="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
+
+      <div class="grid gap-10 md:grid-cols-4">
+
+        <!-- Brand -->
+        <div class="md:col-span-1">
+          <div class="flex items-center gap-2.5">
+            <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-indigo-600 text-white">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="9" />
+                <path d="M15.6 8.4 13.5 13.5 8.4 15.6l2.1-5.1 5.1-2.1Z" />
+              </svg>
+            </span>
+            <span class="text-lg font-bold tracking-tight text-white">
+              CareerPath <span class="text-indigo-400">AI</span>
+            </span>
+          </div>
+          <p class="mt-4 max-w-xs text-sm leading-relaxed text-slate-400">
+            AI-powered career guidance that helps college students choose a direction and build the skills to get there.
+          </p>
+        </div>
+
+        <!-- Platform -->
+        <div>
+          <h3 class="text-sm font-semibold text-white">Platform</h3>
+          <ul class="mt-4 space-y-3">
+            <li><a href="assessment.html" class="text-sm text-slate-400 transition-colors hover:text-white">Assessment</a></li>
+            <li><a href="dashboard.html" class="text-sm text-slate-400 transition-colors hover:text-white">My Career</a></li>
+            <li><a href="roadmap.html" class="text-sm text-slate-400 transition-colors hover:text-white">Roadmap</a></li>
+            <li><a href="counselor.html" class="text-sm text-slate-400 transition-colors hover:text-white">AI Counselor</a></li>
+          </ul>
+        </div>
+
+        <!-- Get started -->
+        <div>
+          <h3 class="text-sm font-semibold text-white">Get Started</h3>
+          <ul class="mt-4 space-y-3">
+            <li><a href="profile.html" class="text-sm text-slate-400 transition-colors hover:text-white">Create Profile</a></li>
+            <li><a href="index.html#how-it-works" class="text-sm text-slate-400 transition-colors hover:text-white">How It Works</a></li>
+            <li><a href="index.html#careers" class="text-sm text-slate-400 transition-colors hover:text-white">Career Categories</a></li>
+            <li><a href="index.html#features" class="text-sm text-slate-400 transition-colors hover:text-white">Features</a></li>
+          </ul>
+        </div>
+
+        <!-- About -->
+        <div>
+          <h3 class="text-sm font-semibold text-white">About</h3>
+          <ul class="mt-4 space-y-3">
+            <li><a href="index.html" class="text-sm text-slate-400 transition-colors hover:text-white">Home</a></li>
+            <li><a href="profile.html" class="text-sm text-slate-400 transition-colors hover:text-white">Get Started</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="mt-12 flex flex-col gap-3 border-t border-slate-800 pt-6 sm:flex-row sm:items-center sm:justify-between">
+        <p class="text-sm text-slate-500">&copy; 2025 CareerPath AI. All rights reserved.</p>
+        <p class="text-sm text-slate-500">Built for college students.</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ================= MOBILE MENU SCRIPT ================= -->
+  <script>
+    (function () {
+      var menuBtn = document.getElementById('menu-btn');
+      var mobileMenu = document.getElementById('mobile-menu');
+      var iconOpen = document.getElementById('icon-open');
+      var iconClose = document.getElementById('icon-close');
+
+      menuBtn.addEventListener('click', function () {
+        var isOpen = !mobileMenu.classList.contains('hidden');
+
+        mobileMenu.classList.toggle('hidden');
+        iconOpen.classList.toggle('hidden', !isOpen);
+        iconClose.classList.toggle('hidden', isOpen);
+        menuBtn.setAttribute('aria-expanded', String(!isOpen));
+      });
+    })();
+  </script>
+
+  <!-- ================= ASSESSMENT SCRIPT ================= -->
+  <script>
+    (function () {
+      'use strict';
+
+      /* -------------------------------------------------------
+         1. DOM REFERENCES
+         ------------------------------------------------------- */
+      var form = document.getElementById('assessment-form');
+      var questions = Array.prototype.slice.call(document.querySelectorAll('.question'));
+      var prevBtn = document.getElementById('prev-btn');
+      var nextBtn = document.getElementById('next-btn');
+      var submitBtn = document.getElementById('submit-btn');
+      var progressBar = document.getElementById('progress-bar');
+      var progressTrack = document.getElementById('progress-track');
+      var progressText = document.getElementById('progress-text');
+      var errorEl = document.getElementById('form-error');
+
+      var total = questions.length; // 10
+      var current = 0;              // zero-based index
+
+      /* -------------------------------------------------------
+         2. NAVIGATION HELPERS
+         ------------------------------------------------------- */
+
+      /* Has the user selected an answer for the question at `index`? */
+      function isAnswered(index) {
+        return questions[index].querySelector('input[type="radio"]:checked') !== null;
+      }
+
+      function showError(message) {
+        errorEl.textContent = message;
+        errorEl.classList.remove('hidden');
+      }
+
+      function hideError() {
+        errorEl.classList.add('hidden');
+      }
+
+      /*
+        Render the current question, progress bar and navigation buttons.
+        `moveFocus` is only true for user-driven navigation so the initial
+        page load does not steal keyboard focus.
+      */
+      function render(moveFocus) {
+        // Show only the active question
+        questions.forEach(function (question, index) {
+          question.classList.toggle('hidden', index !== current);
+        });
+
+        // Progress text + bar (1 of 10 => 10%)
+        var step = current + 1;
+        progressText.textContent = 'Question ' + step + ' of ' + total;
+        progressBar.style.width = (step / total) * 100 + '%';
+        progressTrack.setAttribute('aria-valuenow', String(step));
+
+        // Navigation state
+        prevBtn.disabled = current === 0;
+        nextBtn.classList.toggle('hidden', current === total - 1);
+        submitBtn.classList.toggle('hidden', current !== total - 1);
+        submitBtn.classList.toggle('flex', current === total - 1);
+
+        hideError();
+
+        // Move focus to the question heading for keyboard / screen reader users
+        if (moveFocus) {
+          var heading = questions[current].querySelector('[data-question-heading]');
+          if (heading) {
+            heading.focus({ preventScroll: true });
+          }
+        }
+      }
+
+      /* Next: validate the current question, then advance */
+      nextBtn.addEventListener('click', function () {
+        if (!isAnswered(current)) {
+          showError('Please select an answer before continuing.');
+          return;
+        }
+        if (current < total - 1) {
+          current++;
+          render(true);
+        }
+      });
+
+      /* Previous: always allowed unless already on the first question */
+      prevBtn.addEventListener('click', function () {
+        if (current > 0) {
+          current--;
+          render(true);
+        }
+      });
+
+      /* -------------------------------------------------------
+         3. CLIENT-SIDE SCORING
+         ------------------------------------------------------- */
+
+      /* Read the selected value for a given question name. */
+      function getAnswer(name) {
+        var input = document.querySelector('input[name="' + name + '"]:checked');
+        return input ? input.value : null;
+      }
+
+      /* Career catalogue used for names, focus labels and max scores. */
+      var CAREER_CATALOGUE = {
+        ai_ml: {
+          name: 'AI / Machine Learning Engineer',
+          focus: 'Artificial Intelligence / Machine Learning',
+          maxScore: 22
+        },
+        full_stack: {
+          name: 'Full Stack Developer',
+          focus: 'Full Stack Development',
+          maxScore: 21
+        },
+        data_science: {
+          name: 'Data Scientist',
+          focus: 'Data Science',
+          maxScore: 23
+        },
+        cyber_security: {
+          name: 'Cyber Security Analyst',
+          focus: 'Cyber Security',
+          maxScore: 21
+        }
+      };
+
+      /**
+       * Calculate the assessment result from the current answers.
+       * Deterministic: same answers always produce the same result.
+       */
+      function calculateResult() {
+        var answers = {
+          q1: getAnswer('q1'),
+          q2: getAnswer('q2'),
+          q3: getAnswer('q3'),
+          q4: getAnswer('q4'),
+          q5: getAnswer('q5'),
+          q6: getAnswer('q6'),
+          q7: getAnswer('q7'),
+          q8: getAnswer('q8'),
+          q9: getAnswer('q9'),
+          q10: getAnswer('q10')
+        };
+
+        /* Raw scores per career. */
+        var scores = {
+          ai_ml: 0,
+          full_stack: 0,
+          data_science: 0,
+          cyber_security: 0
+        };
+
+        /* -------- Q1: work preference -------- */
+        switch (answers.q1) {
+          case 'Building websites and applications':
+            scores.full_stack += 3;
+            break;
+          case 'Working with AI and intelligent systems':
+            scores.ai_ml += 3;
+            break;
+          case 'Analyzing data and finding patterns':
+            scores.data_science += 3;
+            break;
+          case 'Protecting systems and networks':
+            scores.cyber_security += 3;
+            break;
+        }
+
+        /* -------- Q2: programming level (also experience) -------- */
+        var experienceLevel = 'Beginner';
+        switch (answers.q2) {
+          case 'Beginner':
+            experienceLevel = 'Beginner';
+            break;
+          case 'Basic':
+            experienceLevel = 'Beginner';
+            scores.cyber_security += 1;
+            break;
+          case 'Intermediate':
+            experienceLevel = 'Intermediate';
+            scores.full_stack += 1;
+            scores.data_science += 1;
+            break;
+          case 'Advanced':
+            experienceLevel = 'Advanced';
+            scores.ai_ml += 2;
+            scores.data_science += 2;
+            scores.full_stack += 1;
+            break;
+        }
+
+        /* -------- Q3: maths & statistics -------- */
+        switch (answers.q3) {
+          case 'I enjoy them':
+            scores.ai_ml += 2;
+            scores.data_science += 2;
+            break;
+          case 'I am comfortable with them':
+            scores.ai_ml += 1;
+            scores.data_science += 1;
+            break;
+          case 'I can manage them':
+            break;
+          case 'I find them difficult':
+            scores.full_stack += 1;
+            scores.cyber_security += 1;
+            break;
+        }
+
+        /* -------- Q4: problem type -------- */
+        switch (answers.q4) {
+          case 'Coding and software problems':
+            scores.full_stack += 2;
+            scores.ai_ml += 1;
+            break;
+          case 'Data and analytical problems':
+            scores.data_science += 2;
+            scores.ai_ml += 1;
+            break;
+          case 'Security and technical problems':
+            scores.cyber_security += 2;
+            break;
+          case 'Creative and design problems':
+            scores.full_stack += 2;
+            break;
+        }
+
+        /* -------- Q5: activity preference -------- */
+        switch (answers.q5) {
+          case 'Creating a website or web application':
+            scores.full_stack += 2;
+            break;
+          case 'Training an AI/ML model':
+            scores.ai_ml += 2;
+            break;
+          case 'Analyzing a dataset':
+            scores.data_science += 2;
+            break;
+          case 'Finding vulnerabilities in a system':
+            scores.cyber_security += 2;
+            break;
+        }
+
+        /* -------- Q6: learning preference -------- */
+        switch (answers.q6) {
+          case 'Building projects':
+            scores.full_stack += 1;
+            break;
+          case 'Watching tutorials and practicing':
+            break;
+          case 'Reading documentation':
+            scores.ai_ml += 1;
+            scores.cyber_security += 1;
+            break;
+          case 'Solving challenges and experiments':
+            scores.ai_ml += 1;
+            scores.data_science += 1;
+            break;
+        }
+
+        /* -------- Q7: strongest skill (also strengths) -------- */
+        var strengths = [];
+        switch (answers.q7) {
+          case 'Logical thinking':
+            scores.ai_ml += 1;
+            scores.cyber_security += 1;
+            strengths = ['Logical thinking', 'Structured problem solving'];
+            break;
+          case 'Creativity':
+            scores.full_stack += 1;
+            strengths = ['Creativity', 'Design thinking'];
+            break;
+          case 'Problem solving':
+            scores.ai_ml += 1;
+            scores.data_science += 1;
+            scores.cyber_security += 1;
+            strengths = ['Problem solving', 'Analytical thinking'];
+            break;
+          case 'Communication':
+            scores.full_stack += 1;
+            strengths = ['Communication', 'Collaboration'];
+            break;
+        }
+
+        /* -------- Q8: career interest (strong weight) -------- */
+        switch (answers.q8) {
+          case 'Artificial Intelligence / Machine Learning':
+            scores.ai_ml += 5;
+            break;
+          case 'Full Stack Development':
+            scores.full_stack += 5;
+            break;
+          case 'Data Science':
+            scores.data_science += 5;
+            break;
+          case 'Cyber Security':
+            scores.cyber_security += 5;
+            break;
+        }
+
+        /* -------- Q9: daily learning time -------- */
+        var learningTime = answers.q9 || '1–2 hours';
+
+        /* -------- Q10: main goal (strong weight) -------- */
+        switch (answers.q10) {
+          case 'Get a software development job':
+            scores.full_stack += 5;
+            break;
+          case 'Build a career in AI/ML':
+            scores.ai_ml += 5;
+            break;
+          case 'Work with data and analytics':
+            scores.data_science += 5;
+            break;
+          case 'Build a cybersecurity career':
+            scores.cyber_security += 5;
+            break;
+        }
+
+        /* -------- Convert raw scores to match percentages -------- */
+        var matches = {};
+        Object.keys(CAREER_CATALOGUE).forEach(function (key) {
+          var max = CAREER_CATALOGUE[key].maxScore;
+          var ratio = max > 0 ? (scores[key] / max) : 0;
+          var pct = Math.round(28 + ratio * 64); // realistic 28–92 range
+          if (pct > 92) pct = 92;
+          if (pct < 28) pct = 28;
+          matches[key] = pct;
+        });
+
+        /* -------- Rank careers by match -------- */
+        var ranked = Object.keys(matches).sort(function (a, b) {
+          return matches[b] - matches[a];
+        });
+
+        var primaryKey = ranked[0];
+        var secondaryKey = ranked[1];
+
+        /* Add a career-specific strength for the primary recommendation. */
+        if (primaryKey === 'ai_ml') strengths.push('Interest in intelligent systems');
+        else if (primaryKey === 'full_stack') strengths.push('Interest in web development');
+        else if (primaryKey === 'data_science') strengths.push('Interest in data analysis');
+        else if (primaryKey === 'cyber_security') strengths.push('Interest in security');
+
+        /* Keep strengths to 3 items. */
+        strengths = strengths.slice(0, 3);
+
+        /* -------- Build the alternatives list (up to 3) -------- */
+        var alternatives = ranked.slice(1).map(function (key) {
+          return {
+            id: key,
+            name: CAREER_CATALOGUE[key].name,
+            score: matches[key]
+          };
+        });
+
+        /* -------- Assemble the final result object -------- */
+        return {
+          primaryCareer: {
+            id: primaryKey,
+            name: CAREER_CATALOGUE[primaryKey].name,
+            score: matches[primaryKey],
+            match: matches[primaryKey]
+          },
+          secondaryCareer: {
+            id: secondaryKey,
+            name: CAREER_CATALOGUE[secondaryKey].name,
+            score: matches[secondaryKey],
+            match: matches[secondaryKey]
+          },
+          alternatives: alternatives,
+          scores: matches,
+          strengths: strengths,
+          learningTime: learningTime,
+          experienceLevel: experienceLevel,
+          careerFocus: CAREER_CATALOGUE[primaryKey].focus,
+          answers: answers,
+          timestamp: new Date().toISOString()
+        };
+      }
+
+      /* -------------------------------------------------------
+         4. SUBMIT HANDLER
+         ------------------------------------------------------- */
+
+      /*
+        Single submit handler for the form:
+          1. Cancel the native navigation.
+          2. Validate ALL 10 questions.
+          3. Calculate the result from the answers.
+          4. Persist it to localStorage under `careerAssessmentResult`.
+          5. Navigate to dashboard.html.
+      */
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        /* --- Validate every question --- */
+        var missing = [];
+        for (var i = 0; i < total; i++) {
+          if (!isAnswered(i)) {
+            missing.push(i + 1);
+          }
+        }
+
+        if (missing.length > 0) {
+          showError(
+            'Please answer all questions before continuing. ' +
+            'Missing: Q' + missing.join(', Q')
+          );
+          /* Jump to the first missing question so the user can fix it. */
+          current = missing[0] - 1;
+          render(true);
+          return;
+        }
+
+        /* --- Calculate and save --- */
+        try {
+          var result = calculateResult();
+
+          try {
+            window.localStorage.setItem(
+              'careerAssessmentResult',
+              JSON.stringify(result)
+            );
+          } catch (storageErr) {
+            /* localStorage may be unavailable (private mode, quota, etc.).
+               We still navigate so the flow does not break. */
+          }
+
+          /* --- Navigate to the dashboard --- */
+          window.location.href = 'dashboard.html';
+        } catch (calcErr) {
+          showError('Something went wrong while calculating your result. Please try again.');
+        }
+      });
+
+      /* -------------------------------------------------------
+         5. INITIAL RENDER
+         ------------------------------------------------------- */
+      render(false);
+    })();
+  </script>
+
+</body>
+</html>

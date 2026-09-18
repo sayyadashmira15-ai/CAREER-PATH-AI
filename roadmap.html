@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Career Roadmap — CareerPath AI</title>
+  <meta name="description" content="A step-by-step learning journey designed to help you build the skills required for your target career." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+</head>
+
+<body class="bg-slate-50 font-sans text-slate-800 antialiased">
+
+  <!-- ================= NAVBAR ================= -->
+  <header class="sticky top-0 z-50 border-b border-slate-200 bg-white">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex h-16 items-center justify-between">
+
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center gap-2.5 rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-indigo-600">
+          <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-indigo-600 text-white">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="9" />
+              <path d="M15.6 8.4 13.5 13.5 8.4 15.6l2.1-5.1 5.1-2.1Z" />
+            </svg>
+          </span>
+          <span class="text-lg font-bold tracking-tight text-slate-900">
+            CareerPath <span class="text-indigo-600">AI</span>
+          </span>
+        </a>
+
+        <!-- Desktop nav -->
+        <nav class="hidden items-center gap-8 md:flex" aria-label="Main navigation">
+          <a href="index.html" class="text-sm font-medium text-slate-600 transition-colors hover:text-indigo-600">Home</a>
+          <a href="assesment.html" class="text-sm font-medium text-slate-600 transition-colors hover:text-indigo-600">Assesment</a>
+          <a href="dashboard.html" class="text-sm font-medium text-slate-600 transition-colors hover:text-indigo-600">My Career</a>
+          <a href="roadmap.html" class="text-sm font-medium text-indigo-600 transition-colors hover:text-indigo-700" aria-current="page">Roadmap</a>
+          <a href="counselor.html" class="text-sm font-medium text-slate-600 transition-colors hover:text-indigo-600">AI Counselor</a>
+        </nav>
+
+        <!-- Desktop CTA -->
+        <div class="hidden md:block">
+          <a href="profile.html"
+             class="inline-flex items-center justify-center rounded-lg bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-indigo-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+            Profile
+          </a>
+        </div>
+
+        <!-- Mobile menu button -->
+        <button id="menu-btn" type="button"
+                class="inline-flex items-center justify-center rounded-lg p-2 text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 md:hidden"
+                aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle navigation menu">
+          <svg id="icon-open" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
+          <svg id="icon-close" class="hidden h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6 6l12 12M18 6 6 18" />
+          </svg>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden border-t border-slate-200 bg-white md:hidden">
+      <nav class="mx-auto max-w-7xl space-y-1 px-4 py-4 sm:px-6" aria-label="Mobile navigation">
+        <a href="index.html" class="block rounded-lg px-3 py-2.5 text-base font-medium text-slate-700 hover:bg-slate-50">Home</a>
+        <a href="assessment.html" class="block rounded-lg px-3 py-2.5 text-base font-medium text-slate-700 hover:bg-slate-50">Assessment</a>
+        <a href="dashboard.html" class="block rounded-lg px-3 py-2.5 text-base font-medium text-slate-700 hover:bg-slate-50">My Career</a>
+        <a href="roadmap.html" class="block rounded-lg px-3 py-2.5 text-base font-medium text-indigo-600 hover:bg-indigo-50">Roadmap</a>
+        <a href="counselor.html" class="block rounded-lg px-3 py-2.5 text-base font-medium text-slate-700 hover:bg-slate-50">AI Counselor</a>
+        <a href="profile.html"
+           class="mt-3 flex items-center justify-center rounded-lg bg-indigo-600 px-5 py-3 text-base font-semibold text-white transition-colors hover:bg-indigo-700">
+          Profile
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="roadmap-main">
+
+    <!-- =========================================================
+         EMPTY STATE — shown when no assessment result is found
+         ========================================================= -->
+    <section id="empty-state" class="hidden">
+      <div class="mx-auto max-w-3xl px-4 py-20 text-center sm:px-6 sm:py-24 lg:px-8">
+
+        <div class="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-indigo-50 text-indigo-600">
+          <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M9 4.5 3.75 6.75v12L9 16.5l6 2.25 5.25-2.25v-12L15 6.75 9 4.5Z" />
+            <path d="M9 4.5v12M15 6.75v12" />
+          </svg>
+        </div>
+
+        <h1 class="mt-6 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+          No roadmap yet
+        </h1>
+        <p class="mx-auto mt-4 max-w-xl text-base leading-relaxed text-slate-600">
+          Please complete the career assessment first.
+        </p>
+
+        <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <a href="assessment.html"
+             class="inline-flex w-full items-center justify-center rounded-lg bg-indigo-600 px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-indigo-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 sm:w-auto">
+            Take Assessment
+          </a>
+          <a href="index.html"
+             class="inline-flex w-full items-center justify-center rounded-lg border border-slate-300 bg-white px-6 py-3.5 text-sm font-semibold text-slate-700 transition-colors hover:border-slate-400 hover:bg-slate-50 hover:text-slate-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 sm:w-auto">
+            Back to Home
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================
+         DYNAMIC ROADMAP CONTENT — shown when assessment exists
+         ========================================================= -->
+    <div id="roadmap-content" class="hidden">
+
+      <!-- ================= PAGE HEADER ================= -->
+      <section class="border-b border-slate-200 bg-white">
+        <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-14 lg:px-8">
+
+          <nav aria-label="Breadcrumb">
+            <ol class="flex flex-wrap items-center gap-2 text-sm text-slate-500">
+              <li><a href="index.html" class="transition-colors hover:text-indigo-600">Home</a></li>
+              <li aria-hidden="true">/</li>
+              <li><a href="dashboard.html" class="transition-colors hover:text-indigo-600">My Career</a></li>
+              <li aria-hidden="true">/</li>
+              <li class="font-medium text-slate-700" aria-current="page">Roadmap</li>
+            </ol>
+          </nav>
+
+          <span class="mt-5 inline-flex items-center gap-2 rounded-full border border-indigo-100 bg-indigo-50 px-3.5 py-1.5 text-xs font-semibold text-indigo-700">
+            <span class="h-1.5 w-1.5 rounded-full bg-indigo-600" aria-hidden="true"></span>
+            Personalized Learning Path
+          </span>
+
+          <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+            Your Career Roadmap
+          </h1>
+          <p class="mt-4 max-w-2xl text-base leading-relaxed text-slate-600">
+            A step-by-step learning journey designed to help you build the skills required for your target career.
+          </p>
+
+        </div>
+      </section>
+
+      <!-- ================= CAREER HEADER CARD ================= -->
+      <section class="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-14 lg:px-8" aria-labelledby="career-header-heading">
+
+        <h2 id="career-header-heading" class="sr-only">Target career overview</h2>
+
+        <article id="careerHeaderCard" class="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8">
+          <div class="grid gap-8 lg:grid-cols-3 lg:gap-10">
+
+            <!-- Career summary -->
+            <div class="lg:col-span-2">
+              <p class="text-xs font-semibold uppercase tracking-wide text-indigo-600">Your recommended career</p>
+
+              <h3 id="careerTitle" class="mt-2 text-2xl font-bold tracking-tight text-slate-900">
+                Career
+              </h3>
+
+              <p id="careerDescription" class="mt-4 text-base leading-relaxed text-slate-600">
+                Roadmap description will appear here.
+              </p>
+
+              <!-- Career focus -->
+              <div class="mt-6">
+                <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Career focus</p>
+                <p id="careerFocus" class="mt-1 text-sm font-medium text-slate-900">—</p>
+              </div>
+
+              <!-- Strengths -->
+              <div class="mt-6">
+                <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Your strengths</p>
+                <ul id="careerStrengths" class="mt-3 flex flex-wrap gap-2">
+                  <!-- filled dynamically -->
+                </ul>
+              </div>
+            </div>
+
+            <!-- Meta panel -->
+            <div class="rounded-xl border border-slate-200 bg-slate-50 p-6">
+              <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Roadmap overview</p>
+
+              <dl class="mt-4 space-y-4">
+                <div>
+                  <dt class="text-xs font-semibold uppercase tracking-wide text-slate-500">Assessment Match</dt>
+                  <dd id="careerMatch" class="mt-1 text-sm font-medium text-indigo-700">—</dd>
+                </div>
+                <div>
+                  <dt class="text-xs font-semibold uppercase tracking-wide text-slate-500">Current Level</dt>
+                  <dd id="currentLevel" class="mt-1 text-sm font-medium text-slate-900">—</dd>
+                </div>
+                <div>
+                  <dt class="text-xs font-semibold uppercase tracking-wide text-slate-500">Learning Time</dt>
+                  <dd id="learningTime" class="mt-1 text-sm font-medium text-slate-900">—</dd>
+                </div>
+                <div>
+                  <dt class="text-xs font-semibold uppercase tracking-wide text-slate-500">Estimated Journey</dt>
+                  <dd id="estimatedJourney" class="mt-1 text-sm font-medium text-slate-900">—</dd>
+                </div>
+              </dl>
+
+              <p class="mt-5 border-t border-slate-200 pt-4 text-xs leading-relaxed text-slate-500">
+                Durations are indicative and can vary depending on your pace and consistency.
+              </p>
+            </div>
+
+          </div>
+        </article>
+      </section>
+
+      <!-- ================= ROADMAP TIMELINE ================= -->
+      <section class="border-y border-slate-200 bg-white" aria-labelledby="roadmap-heading">
+        <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-14 lg:px-8">
+
+          <h2 id="roadmap-heading" class="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+            Learning Stages
+          </h2>
+          <p class="mt-3 max-w-2xl text-base leading-relaxed text-slate-600">
+            Work through each stage in order. Later stages build on the skills you pick up earlier.
+          </p>
+
+          <!-- Timeline (filled dynamically) -->
+          <ol id="roadmapTimeline" class="relative mt-10 space-y-6 border-l-2 border-slate-200 pl-6 sm:pl-8"></ol>
+
+          <!-- Total duration -->
+          <div class="mt-8 rounded-2xl border border-slate-200 bg-slate-50 p-5 sm:p-6">
+            <div class="flex flex-wrap items-center justify-between gap-3">
+              <div class="flex items-center gap-3">
+                <span class="flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600">
+                  <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9" />
+                    <path d="M12 7.5V12l3 1.5" />
+                  </svg>
+                </span>
+                <div>
+                  <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Total estimated learning duration</p>
+                  <p id="totalDuration" class="mt-1 text-base font-semibold text-slate-900">—</p>
+                </div>
+              </div>
+              <p class="text-sm text-slate-500">Based on consistent study.</p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ================= SKILL CHECKLIST ================= -->
+      <section class="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-14 lg:px-8" aria-labelledby="skills-heading">
+
+        <h2 id="skills-heading" class="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+          Skills You Will Build
+        </h2>
+        <p class="mt-3 max-w-2xl text-base leading-relaxed text-slate-600">
+          A summary of the skills covered across the roadmap stages.
+        </p>
+
+        <div id="skillChecklist" class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4"></div>
+      </section>
+
+      <!-- ================= PROJECT SUGGESTIONS ================= -->
+      <section class="border-y border-slate-200 bg-white" aria-labelledby="projects-heading">
+        <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-14 lg:px-8">
+
+          <h2 id="projects-heading" class="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+            Build While You Learn
+          </h2>
+          <p class="mt-3 max-w-2xl text-base leading-relaxed text-slate-600">
+            Applying your skills to a project is the fastest way to make them stick.
+          </p>
+
+          <div id="projectSuggestions" class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"></div>
+        </div>
+      </section>
+
+      <!-- ================= EXAMPLE WEEKLY PLAN ================= -->
+      <section class="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-14 lg:px-8" aria-labelledby="weekly-plan-heading">
+
+        <div class="flex flex-wrap items-center gap-3">
+          <h2 id="weekly-plan-heading" class="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+            Example Weekly Plan
+          </h2>
+          <span class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-semibold text-slate-600">
+            Example only
+          </span>
+        </div>
+        <p class="mt-3 max-w-2xl text-base leading-relaxed text-slate-600">
+          A sample schedule to help you spread your learning across the week.
+        </p>
+
+        <ul id="weeklyPlan" class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+
+          <li class="rounded-2xl border border-slate-200 bg-white p-5">
+            <p class="text-xs font-semibold uppercase tracking-wide text-indigo-600">Monday</p>
+            <p class="mt-2 text-sm font-semibold text-slate-900">Core Skills</p>
+            <p class="mt-1 text-sm leading-relaxed text-slate-600">Study the current stage's main topic.</p>
+          </li>
+
+          <li class="rounded-2xl border border-slate-200 bg-white p-5">
+            <p class="text-xs font-semibold uppercase tracking-wide text-indigo-600">Tuesday</p>
+            <p class="mt-2 text-sm font-semibold text-slate-900">Tools &amp; Practice</p>
+            <p class="mt-1 text-sm leading-relaxed text-slate-600">Work through exercises and tooling.</p>
+          </li>
+
+          <li class="rounded-2xl border border-slate-200 bg-white p-5">
+            <p class="text-xs font-semibold uppercase tracking-wide text-indigo-600">Wednesday</p>
+            <p class="mt-2 text-sm font-semibold text-slate-900">Theory</p>
+            <p class="mt-1 text-sm leading-relaxed text-slate-600">Study the underlying concepts.</p>
+          </li>
+
+          <li class="rounded-2xl border border-slate-200 bg-white p-5">
+            <p class="text-xs font-semibold uppercase tracking-wide text-indigo-600">Thursday</p>
+            <p class="mt-2 text-sm font-semibold text-slate-900">Applied Work</p>
+            <p class="mt-1 text-sm leading-relaxed text-slate-600">Apply what you learned to small tasks.</p>
+          </li>
+
+          <li class="rounded-2xl border border-slate-200 bg-white p-5">
+            <p class="text-xs font-semibold uppercase tracking-wide text-indigo-600">Friday</p>
+            <p class="mt-2 text-sm font-semibold text-slate-900">Practice</p>
+            <p class="mt-1 text-sm leading-relaxed text-slate-600">Solve problems from the week's topics.</p>
+          </li>
+
+          <li class="rounded-2xl border border-slate-200 bg-white p-5">
+            <p class="text-xs font-semibold uppercase tracking-wide text-indigo-600">Saturday</p>
+            <p class="mt-2 text-sm font-semibold text-slate-900">Project Work</p>
+            <p class="mt-1 text-sm leading-relaxed text-slate-600">Apply your skills to a small project.</p>
+          </li>
+
+          <li class="rounded-2xl border border-slate-200 bg-white p-5">
+            <p class="text-xs font-semibold uppercase tracking-wide text-indigo-600">Sunday</p>
+            <p class="mt-2 text-sm font-semibold text-slate-900">Revision</p>
+            <p class="mt-1 text-sm leading-relaxed text-slate-600">Review notes and plan the next week.</p>
+          </li>
+
+        </ul>
+      </section>
+
+      <!-- ================= CALL TO ACTION ================= -->
+      <section class="mx-auto max-w-7xl px-4 pb-12 sm:px-6 sm:pb-16 lg:px-8">
+        <div class="rounded-3xl bg-indigo-600 px-6 py-12 text-center sm:px-12 sm:py-14">
+          <h2 class="text-2xl font-bold tracking-tight text-white sm:text-3xl">
+            Need help choosing what to learn next?
+          </h2>
+          <p class="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-indigo-100">
+            Ask our AI Career Counselor for guidance based on your goals and progress.
+          </p>
+          <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <a href="counselor.html"
+               class="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-white px-7 py-3.5 text-sm font-semibold text-indigo-700 shadow-sm transition-colors hover:bg-indigo-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:w-auto">
+              Talk to AI Counselor
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
+            </a>
+            <a href="dashboard.html"
+               class="inline-flex w-full items-center justify-center rounded-lg border border-indigo-400 px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:w-auto">
+              Back to Career Insights
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /#roadmap-content -->
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="bg-slate-900">
+    <div class="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
+
+      <div class="grid gap-10 md:grid-cols-4">
+
+        <!-- Brand -->
+        <div class="md:col-span-1">
+          <div class="flex items-center gap-2.5">
+            <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-indigo-600 text-white">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="9" />
+                <path d="M15.6 8.4 13.5 13.5 8.4 15.6l2.1-5.1 5.1-2.1Z" />
+              </svg>
+            </span>
+            <span class="text-lg font-bold tracking-tight text-white">
+              CareerPath <span class="text-indigo-400">AI</span>
+            </span>
+          </div>
+          <p class="mt-4 max-w-xs text-sm leading-relaxed text-slate-400">
+            AI-powered career guidance that helps college students choose a direction and build the skills to get there.
+          </p>
+        </div>
+
+        <!-- Platform -->
+        <div>
+          <h3 class="text-sm font-semibold text-white">Platform</h3>
+          <ul class="mt-4 space-y-3">
+            <li><a href="assessment.html" class="text-sm text-slate-400 transition-colors hover:text-white">Assessment</a></li>
+            <li><a href="dashboard.html" class="text-sm text-slate-400 transition-colors hover:text-white">My Career</a></li>
+            <li><a href="roadmap.html" class="text-sm text-slate-400 transition-colors hover:text-white">Roadmap</a></li>
+            <li><a href="counselor.html" class="text-sm text-slate-400 transition-colors hover:text-white">AI Counselor</a></li>
+          </ul>
+        </div>
+
+        <!-- Get started -->
+        <div>
+          <h3 class="text-sm font-semibold text-white">Get Started</h3>
+          <ul class="mt-4 space-y-3">
+            <li><a href="profile.html" class="text-sm text-slate-400 transition-colors hover:text-white">Create Profile</a></li>
+            <li><a href="index.html#how-it-works" class="text-sm text-slate-400 transition-colors hover:text-white">How It Works</a></li>
+            <li><a href="index.html#careers" class="text-sm text-slate-400 transition-colors hover:text-white">Career Categories</a></li>
+            <li><a href="index.html#features" class="text-sm text-slate-400 transition-colors hover:text-white">Features</a></li>
+          </ul>
+        </div>
+
+        <!-- About -->
+        <div>
+          <h3 class="text-sm font-semibold text-white">About</h3>
+          <ul class="mt-4 space-y-3">
+            <li><a href="index.html" class="text-sm text-slate-400 transition-colors hover:text-white">Home</a></li>
+            <li><a href="profile.html" class="text-sm text-slate-400 transition-colors hover:text-white">Get Started</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="mt-12 flex flex-col gap-3 border-t border-slate-800 pt-6 sm:flex-row sm:items-center sm:justify-between">
+        <p class="text-sm text-slate-500">&copy; 2025 CareerPath AI. All rights reserved.</p>
+        <p class="text-sm text-slate-500">Built for college students.</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ================= MOBILE MENU SCRIPT ================= -->
+  <script>
+    (function () {
+      var menuBtn = document.getElementById('menu-btn');
+      var mobileMenu = document.getElementById('mobile-menu');
+      var iconOpen = document.getElementById('icon-open');
+      var iconClose = document.getElementById('icon-close');
+
+      if (!menuBtn || !mobileMenu || !iconOpen || !iconClose) return;
+
+      menuBtn.addEventListener('click', function () {
+        var isOpen = !mobileMenu.classList.contains('hidden');
+
+        mobileMenu.classList.toggle('hidden');
+        iconOpen.classList.toggle('hidden', !isOpen);
+        iconClose.classList.toggle('hidden', isOpen);
+        menuBtn.setAttribute('aria-expanded', String(!isOpen));
+      });
+    })();
+  </script>
+
+  <!-- ================= ROADMAP SCRIPT ================= -->
+  <script>
+    (function () {
+      'use strict';
+
+      /* =========================================================
+         1. CONFIGURATION
+         ========================================================= */
+
+      var STORAGE_KEY = 'careerAssessmentResult';
+
+      /*
+        Per-career roadmap data.
+        Stages, skills and projects are tuned to a realistic
+        beginner-friendly journey for each career track.
+      */
+      var CAREER_DATA = {
+
+        /* ---------------- AI / ML ---------------- */
+        ai_ml: {
+          name: 'AI / Machine Learning Engineer',
+          shortName: 'AI / ML Engineer',
+          description: 'Build your foundation in programming, data, machine learning and AI through structured learning and practical projects.',
+          totalDuration: '5–7 months',
+          stages: [
+            {
+              title: 'Python & Programming Fundamentals',
+              description: 'Build a strong programming foundation.',
+              skills: ['Python Basics', 'Control Flow', 'Functions', 'Git & GitHub'],
+              duration: '3–4 weeks'
+            },
+            {
+              title: 'Mathematics, NumPy, Pandas & Data Handling',
+              description: 'Learn how to work with and understand datasets.',
+              skills: ['NumPy', 'Pandas', 'Data Cleaning', 'Data Visualization'],
+              duration: '4–6 weeks'
+            },
+            {
+              title: 'Machine Learning',
+              description: 'Learn how machine learning models are trained and evaluated.',
+              skills: ['Supervised Learning', 'Unsupervised Learning', 'Model Evaluation', 'Scikit-learn'],
+              duration: '6–8 weeks'
+            },
+            {
+              title: 'Deep Learning',
+              description: 'Move from traditional machine learning toward modern AI techniques.',
+              skills: ['Neural Networks', 'Deep Learning Fundamentals', 'Computer Vision', 'NLP Basics'],
+              duration: '6–8 weeks'
+            },
+            {
+              title: 'Projects & Portfolio',
+              description: 'Build practical projects that demonstrate your skills.',
+              skills: ['End-to-end AI project', 'GitHub portfolio', 'Project documentation', 'Deployment basics'],
+              duration: '4–6 weeks'
+            },
+            {
+              title: 'Deployment & Interview Preparation',
+              description: 'Prepare to apply for AI/ML roles with a polished portfolio.',
+              skills: ['MLOps Basics', 'Model Deployment', 'Interview Practice', 'Resume Building'],
+              duration: '3–4 weeks'
+            }
+          ],
+          skills: [
+            { name: 'Python', description: 'The core language used throughout the roadmap.', status: 'In progress', tone: 'emerald' },
+            { name: 'NumPy & Pandas', description: 'Load, clean and transform real datasets.', status: 'In progress', tone: 'emerald' },
+            { name: 'Statistics', description: 'Probability, distributions and how to evaluate results.', status: 'Up next', tone: 'amber' },
+            { name: 'Machine Learning', description: 'Train and evaluate models on real problems.', status: 'Upcoming', tone: 'slate' },
+            { name: 'Deep Learning', description: 'Neural networks and modern AI techniques.', status: 'Upcoming', tone: 'slate' },
+            { name: 'Git & GitHub', description: 'Version control and sharing your work publicly.', status: 'In progress', tone: 'emerald' },
+            { name: 'Data Visualization', description: 'Communicate findings clearly with charts and plots.', status: 'Up next', tone: 'amber' },
+            { name: 'AI Projects', description: 'End-to-end projects that show what you can build.', status: 'Upcoming', tone: 'slate' }
+          ],
+          projects: [
+            {
+              title: 'Student Performance Prediction System',
+              description: 'Analyze student-related data and predict academic performance using a simple machine learning model.',
+              difficulty: 'Beginner',
+              difficultyTone: 'slate',
+              skills: ['Python', 'Pandas', 'Machine Learning']
+            },
+            {
+              title: 'AI Resume Analyzer',
+              description: 'Extract key information from resumes and match candidates against a job description using NLP.',
+              difficulty: 'Intermediate',
+              difficultyTone: 'amber',
+              skills: ['Python', 'NLP', 'Machine Learning']
+            },
+            {
+              title: 'AI Career Recommendation System',
+              description: 'Build an end-to-end system that recommends career paths based on a student\'s profile and interests.',
+              difficulty: 'Advanced',
+              difficultyTone: 'red',
+              skills: ['Python', 'NLP', 'LLMs', 'Machine Learning']
+            }
+          ]
+        },
+
+        /* ---------------- Full Stack ---------------- */
+        full_stack: {
+          name: 'Full Stack Developer',
+          shortName: 'Full Stack Developer',
+          description: 'Learn to build complete web applications — from the user interface through to the server, database and APIs.',
+          totalDuration: '4–6 months',
+          stages: [
+            {
+              title: 'HTML, CSS & Web Fundamentals',
+              description: 'Understand how the web works and build your first pages.',
+              skills: ['HTML5', 'CSS3', 'Responsive Design', 'Browser DevTools'],
+              duration: '2–3 weeks'
+            },
+            {
+              title: 'JavaScript Essentials',
+              description: 'Learn the language that powers the browser.',
+              skills: ['Syntax & Types', 'DOM Manipulation', 'Events', 'Fetch & Promises'],
+              duration: '4–5 weeks'
+            },
+            {
+              title: 'Frontend Framework (React)',
+              description: 'Build interactive interfaces with components and state.',
+              skills: ['Components', 'Props & State', 'Hooks', 'Routing'],
+              duration: '5–6 weeks'
+            },
+            {
+              title: 'Backend Development',
+              description: 'Build servers, routes and handle requests.',
+              skills: ['Node.js', 'Express', 'REST APIs', 'Authentication'],
+              duration: '5–6 weeks'
+            },
+            {
+              title: 'Databases & Data Modelling',
+              description: 'Store and query application data reliably.',
+              skills: ['SQL Basics', 'MongoDB', 'Schema Design', 'ORM / ODM'],
+              duration: '3–4 weeks'
+            },
+            {
+              title: 'Projects, Deployment & Interviews',
+              description: 'Ship a full stack project and prepare for interviews.',
+              skills: ['Full Stack Project', 'Deployment', 'Git Workflow', 'Interview Practice'],
+              duration: '4–5 weeks'
+            }
+          ],
+          skills: [
+            { name: 'HTML & CSS', description: 'Structure and style the web.', status: 'In progress', tone: 'emerald' },
+            { name: 'JavaScript', description: 'Add interactivity to your pages.', status: 'In progress', tone: 'emerald' },
+            { name: 'React', description: 'Build reusable UI components.', status: 'Up next', tone: 'amber' },
+            { name: 'Node.js', description: 'Run JavaScript on the server.', status: 'Upcoming', tone: 'slate' },
+            { name: 'Databases', description: 'Persist and query application data.', status: 'Upcoming', tone: 'slate' },
+            { name: 'REST APIs', description: 'Design endpoints that other apps can use.', status: 'Upcoming', tone: 'slate' },
+            { name: 'Git & GitHub', description: 'Track changes and collaborate.', status: 'In progress', tone: 'emerald' },
+            { name: 'Full Stack Projects', description: 'Ship end-to-end applications.', status: 'Upcoming', tone: 'slate' }
+          ],
+          projects: [
+            {
+              title: 'Student Career Portal',
+              description: 'Build a full stack web application where students can create profiles, browse careers and track progress.',
+              difficulty: 'Beginner',
+              difficultyTone: 'slate',
+              skills: ['HTML/CSS', 'JavaScript', 'Node.js']
+            },
+            {
+              title: 'Task Manager App',
+              description: 'A CRUD application with user accounts, tasks, deadlines and progress tracking.',
+              difficulty: 'Intermediate',
+              difficultyTone: 'amber',
+              skills: ['React', 'Node.js', 'MongoDB']
+            },
+            {
+              title: 'E-commerce Store',
+              description: 'A storefront with product listings, cart, checkout and order management.',
+              difficulty: 'Advanced',
+              difficultyTone: 'red',
+              skills: ['React', 'Node.js', 'SQL', 'Auth']
+            }
+          ]
+        },
+
+        /* ---------------- Data Science ---------------- */
+        data_science: {
+          name: 'Data Scientist',
+          shortName: 'Data Scientist',
+          description: 'Turn raw data into clear insights using statistics, programming and predictive modelling techniques.',
+          totalDuration: '5–7 months',
+          stages: [
+            {
+              title: 'Python & Programming Basics',
+              description: 'Build the programming foundation you need for data work.',
+              skills: ['Python Syntax', 'Data Types', 'Functions', 'Git & GitHub'],
+              duration: '3–4 weeks'
+            },
+            {
+              title: 'Statistics & Probability',
+              description: 'Understand the mathematics behind data analysis.',
+              skills: ['Descriptive Statistics', 'Probability', 'Distributions', 'Hypothesis Testing'],
+              duration: '4–5 weeks'
+            },
+            {
+              title: 'Data Handling with Pandas & NumPy',
+              description: 'Load, clean and transform real datasets.',
+              skills: ['NumPy', 'Pandas', 'Data Cleaning', 'Missing Values'],
+              duration: '4–5 weeks'
+            },
+            {
+              title: 'Data Visualization & EDA',
+              description: 'Explore data and communicate what you find.',
+              skills: ['Matplotlib', 'Seaborn', 'Exploratory Analysis', 'Storytelling with Data'],
+              duration: '3–4 weeks'
+            },
+            {
+              title: 'Machine Learning for Data Science',
+              description: 'Build and evaluate predictive models.',
+              skills: ['Regression', 'Classification', 'Clustering', 'Model Evaluation'],
+              duration: '6–8 weeks'
+            },
+            {
+              title: 'Projects & Portfolio',
+              description: 'Complete end-to-end data projects and present them.',
+              skills: ['End-to-end Project', 'Notebooks', 'Portfolio', 'Interview Practice'],
+              duration: '4–6 weeks'
+            }
+          ],
+          skills: [
+            { name: 'Python', description: 'The core language for data work.', status: 'In progress', tone: 'emerald' },
+            { name: 'Statistics', description: 'The mathematics behind analysis.', status: 'In progress', tone: 'emerald' },
+            { name: 'Pandas', description: 'Clean and reshape datasets.', status: 'Up next', tone: 'amber' },
+            { name: 'Data Visualization', description: 'Turn data into clear visuals.', status: 'Upcoming', tone: 'slate' },
+            { name: 'SQL', description: 'Query databases directly.', status: 'Upcoming', tone: 'slate' },
+            { name: 'Machine Learning', description: 'Build predictive models.', status: 'Upcoming', tone: 'slate' },
+            { name: 'Git & GitHub', description: 'Share notebooks and projects.', status: 'In progress', tone: 'emerald' },
+            { name: 'Data Projects', description: 'End-to-end analyses.', status: 'Upcoming', tone: 'slate' }
+          ],
+          projects: [
+            {
+              title: 'Student Placement Data Analysis',
+              description: 'Analyse a placement dataset to uncover which factors correlate with successful outcomes, then present the findings.',
+              difficulty: 'Beginner',
+              difficultyTone: 'slate',
+              skills: ['Python', 'Pandas', 'Statistics']
+            },
+            {
+              title: 'Sales Forecasting',
+              description: 'Predict future sales from historical data using time series or regression techniques.',
+              difficulty: 'Intermediate',
+              difficultyTone: 'amber',
+              skills: ['Python', 'Pandas', 'Machine Learning']
+            },
+            {
+              title: 'Customer Churn Prediction',
+              description: 'Build a model that predicts which customers are likely to leave, and explain the key drivers.',
+              difficulty: 'Advanced',
+              difficultyTone: 'red',
+              skills: ['Python', 'Scikit-learn', 'Visualization']
+            }
+          ]
+        },
+
+        /* ---------------- Cyber Security ---------------- */
+        cyber_security: {
+          name: 'Cyber Security Analyst',
+          shortName: 'Cyber Security Analyst',
+          description: 'Learn to protect applications, systems and networks from security threats.',
+          totalDuration: '5–7 months',
+          stages: [
+            {
+              title: 'Networking Fundamentals',
+              description: 'Understand how data moves across networks.',
+              skills: ['OSI Model', 'TCP/IP', 'DNS & HTTP', 'Network Tools'],
+              duration: '4–5 weeks'
+            },
+            {
+              title: 'Linux & Operating Systems',
+              description: 'Get comfortable with the systems you will be securing.',
+              skills: ['Command Line', 'File Permissions', 'Processes', 'Shell Scripting'],
+              duration: '3–4 weeks'
+            },
+            {
+              title: 'Security Fundamentals',
+              description: 'Learn the core concepts of information security.',
+              skills: ['CIA Triad', 'Authentication', 'Encryption', 'Access Control'],
+              duration: '4–5 weeks'
+            },
+            {
+              title: 'Ethical Hacking & Tools',
+              description: 'Practice finding weaknesses in controlled environments.',
+              skills: ['Reconnaissance', 'Scanning', 'Exploitation', 'Burp Suite & Nmap'],
+              duration: '5–6 weeks'
+            },
+            {
+              title: 'Incident Response & Forensics',
+              description: 'Learn how to detect, respond to and investigate incidents.',
+              skills: ['Log Analysis', 'SIEM Basics', 'Forensics', 'Reporting'],
+              duration: '4–5 weeks'
+            },
+            {
+              title: 'Certifications & Interview Preparation',
+              description: 'Prepare for entry-level certifications and interviews.',
+              skills: ['Security+ Prep', 'CTF Practice', 'Interview Practice', 'Resume Building'],
+              duration: '4–6 weeks'
+            }
+          ],
+          skills: [
+            { name: 'Networking', description: 'How data travels across networks.', status: 'In progress', tone: 'emerald' },
+            { name: 'Linux', description: 'The command line and system internals.', status: 'In progress', tone: 'emerald' },
+            { name: 'Security Fundamentals', description: 'Core concepts of information security.', status: 'Up next', tone: 'amber' },
+            { name: 'Ethical Hacking', description: 'Practice finding weaknesses safely.', status: 'Upcoming', tone: 'slate' },
+            { name: 'Incident Response', description: 'Detect and investigate incidents.', status: 'Upcoming', tone: 'slate' },
+            { name: 'Cryptography', description: 'Encryption and secure communication.', status: 'Upcoming', tone: 'slate' },
+            { name: 'Git & GitHub', description: 'Track notes, tools and reports.', status: 'In progress', tone: 'emerald' },
+            { name: 'Security Projects', description: 'Hands-on labs and CTF practice.', status: 'Upcoming', tone: 'slate' }
+          ],
+          projects: [
+            {
+              title: 'Web Security Vulnerability Scanner',
+              description: 'Build a small tool that checks a web application for common misconfigurations and reports the findings.',
+              difficulty: 'Beginner',
+              difficultyTone: 'slate',
+              skills: ['Python', 'Networking', 'Security Fundamentals']
+            },
+            {
+              title: 'Password Strength Checker',
+              description: 'Build a tool that evaluates password strength against common attack patterns and best practices.',
+              difficulty: 'Intermediate',
+              difficultyTone: 'amber',
+              skills: ['Python', 'Cryptography', 'Security Fundamentals']
+            },
+            {
+              title: 'Network Traffic Analyzer',
+              description: 'Capture and analyse network traffic to detect suspicious patterns and generate reports.',
+              difficulty: 'Advanced',
+              difficultyTone: 'red',
+              skills: ['Python', 'Networking', 'Log Analysis']
+            }
+          ]
+        }
+      };
+
+      /* =========================================================
+         2. UTILITIES
+         ========================================================= */
+
+      /** Safely read and parse the assessment result from localStorage. */
+      function readResult() {
+        var raw;
+        try {
+          raw = window.localStorage.getItem(STORAGE_KEY);
+        } catch (err) {
+          return null;
+        }
+        if (!raw) return null;
+
+        try {
+          var parsed = JSON.parse(raw);
+          if (!parsed || typeof parsed !== 'object') return null;
+          return parsed;
+        } catch (err) {
+          return null;
+        }
+      }
+
+      /** Map any career id or name to a known key in CAREER_DATA. */
+      function normalizeCareerKey(idOrName) {
+        if (!idOrName) return null;
+
+        var s = String(idOrName).toLowerCase().replace(/[\s\-\/]+/g, '_');
+
+        if (CAREER_DATA[s]) return s;
+
+        if (s.indexOf('ai') !== -1 || s.indexOf('ml') !== -1 || s.indexOf('machine') !== -1) return 'ai_ml';
+        if (s.indexOf('full') !== -1 || s.indexOf('stack') !== -1 || s.indexOf('web') !== -1) return 'full_stack';
+        if (s.indexOf('data') !== -1 || s.indexOf('scientist') !== -1) return 'data_science';
+        if (s.indexOf('cyber') !== -1 || s.indexOf('security') !== -1) return 'cyber_security';
+
+        return null;
+      }
+
+      /** Simple text escape for use inside template literals. */
+      function esc(s) {
+        if (s === undefined || s === null) return '';
+        return String(s)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#39;');
+      }
+
+      /* =========================================================
+         3. RENDER HELPERS
+         ========================================================= */
+
+      function showEmptyState() {
+        var empty = document.getElementById('empty-state');
+        var content = document.getElementById('roadmap-content');
+        if (empty) empty.classList.remove('hidden');
+        if (content) content.classList.add('hidden');
+      }
+
+      function showContent() {
+        var empty = document.getElementById('empty-state');
+        var content = document.getElementById('roadmap-content');
+        if (empty) empty.classList.add('hidden');
+        if (content) content.classList.remove('hidden');
+      }
+
+      /** Render the career header card values. */
+      function renderHeader(result, career) {
+        var careerName = (result.primaryCareer && result.primaryCareer.name) || career.name;
+        var match = (result.primaryCareer && (result.primaryCareer.match || result.primaryCareer.score)) || null;
+
+        /* Career title + description */
+        var titleEl = document.getElementById('careerTitle');
+        if (titleEl) titleEl.textContent = careerName;
+
+        var descEl = document.getElementById('careerDescription');
+        if (descEl) descEl.textContent = career.description;
+
+        /* Career focus */
+        var focusEl = document.getElementById('careerFocus');
+        if (focusEl) {
+          focusEl.textContent = result.careerFocus || career.name;
+        }
+
+        /* Strengths */
+        var strengthsEl = document.getElementById('careerStrengths');
+        if (strengthsEl) {
+          strengthsEl.textContent = '';
+          var strengths = Array.isArray(result.strengths) ? result.strengths : [];
+          if (strengths.length === 0) {
+            var fallback = document.createElement('li');
+            fallback.className = 'rounded-md bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-600';
+            fallback.textContent = 'Not available';
+            strengthsEl.appendChild(fallback);
+          } else {
+            strengths.forEach(function (s) {
+              var li = document.createElement('li');
+              li.className = 'rounded-md bg-indigo-50 px-2.5 py-1 text-xs font-medium text-indigo-700';
+              li.textContent = s;
+              strengthsEl.appendChild(li);
+            });
+          }
+        }
+
+        /* Meta panel */
+        var matchEl = document.getElementById('careerMatch');
+        if (matchEl) {
+          matchEl.textContent = match !== null ? (match + '% assessment match') : 'Not available';
+        }
+
+        var levelEl = document.getElementById('currentLevel');
+        if (levelEl) levelEl.textContent = result.experienceLevel || 'Not available';
+
+        var timeEl = document.getElementById('learningTime');
+        if (timeEl) timeEl.textContent = result.learningTime || 'Not available';
+
+        var journeyEl = document.getElementById('estimatedJourney');
+        if (journeyEl) journeyEl.textContent = career.totalDuration;
+      }
+
+      /** Render the roadmap timeline. */
+      function renderTimeline(career) {
+        var ol = document.getElementById('roadmapTimeline');
+        if (!ol) return;
+
+        ol.textContent = '';
+
+        career.stages.forEach(function (stage, i) {
+          var isCurrent = (i === 0);
+          var isNext = (i === 1);
+
+          /* Marker */
+          var markerClass;
+          var markerInner;
+          if (isCurrent) {
+            markerClass = 'bg-indigo-600 text-white';
+            markerInner = '<span class="h-2 w-2 rounded-full bg-white"></span>';
+          } else if (isNext) {
+            markerClass = 'bg-white text-slate-400';
+            markerInner = '<span class="h-6 w-6 rounded-full border-2 border-amber-400"></span>';
+          } else {
+            markerClass = 'bg-white text-slate-400';
+            markerInner = '<span class="h-6 w-6 rounded-full border-2 border-slate-300"></span>';
+          }
+
+          /* Card border */
+          var cardClass = isCurrent
+            ? 'rounded-2xl border-2 border-indigo-600 bg-white p-6 sm:p-7'
+            : 'rounded-2xl border border-slate-200 bg-white p-6 sm:p-7';
+
+          /* Number badge */
+          var numberClass = isCurrent
+            ? 'bg-indigo-50 text-indigo-600'
+            : 'bg-slate-100 text-slate-600';
+
+          /* Status badge */
+          var statusText, statusClass;
+          if (isCurrent) {
+            statusText = 'Start here';
+            statusClass = 'bg-indigo-50 text-indigo-700';
+          } else if (isNext) {
+            statusText = 'Next';
+            statusClass = 'bg-amber-50 text-amber-700';
+          } else {
+            statusText = 'Upcoming';
+            statusClass = 'bg-slate-100 text-slate-600';
+          }
+
+          /* Skill chips */
+          var skillChips = stage.skills.map(function (s) {
+            return '<li class="rounded-md bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-700">' + esc(s) + '</li>';
+          }).join('');
+
+          var html =
+            '<li class="relative" data-stage="' + (i + 1) + '">' +
+              '<span class="absolute -left-[35px] top-6 flex h-6 w-6 items-center justify-center rounded-full ' + markerClass + ' ring-4 ring-white sm:-left-[43px]" aria-hidden="true">' +
+                markerInner +
+              '</span>' +
+              '<div class="' + cardClass + '">' +
+                '<div class="flex flex-wrap items-center justify-between gap-3">' +
+                  '<div class="flex items-center gap-3">' +
+                    '<span class="flex h-9 w-9 items-center justify-center rounded-lg text-sm font-bold ' + numberClass + '">' + (i + 1) + '</span>' +
+                    '<h3 class="text-lg font-semibold text-slate-900">' + esc(stage.title) + '</h3>' +
+                  '</div>' +
+                  '<span class="rounded-full px-3 py-1 text-xs font-semibold ' + statusClass + '">' + statusText + '</span>' +
+                '</div>' +
+                '<p class="mt-4 text-sm leading-relaxed text-slate-600">' + esc(stage.description) + '</p>' +
+                '<div class="mt-5">' +
+                  '<h4 class="text-xs font-semibold uppercase tracking-wide text-slate-500">Skills</h4>' +
+                  '<ul class="mt-3 flex flex-wrap gap-2">' + skillChips + '</ul>' +
+                '</div>' +
+                '<p class="mt-5 text-xs font-medium text-slate-500">Duration: ' + esc(stage.duration) + '</p>' +
+              '</div>' +
+            '</li>';
+
+          ol.insertAdjacentHTML('beforeend', html);
+        });
+
+        /* Total duration */
+        var totalEl = document.getElementById('totalDuration');
+        if (totalEl) totalEl.textContent = career.totalDuration;
+      }
+
+      /** Render the skills checklist grid. */
+      function renderSkills(career) {
+        var container = document.getElementById('skillChecklist');
+        if (!container) return;
+
+        container.textContent = '';
+
+        career.skills.forEach(function (skill) {
+          var toneClass;
+          if (skill.tone === 'emerald') {
+            toneClass = 'bg-emerald-50 text-emerald-700';
+          } else if (skill.tone === 'amber') {
+            toneClass = 'bg-amber-50 text-amber-700';
+          } else {
+            toneClass = 'bg-slate-100 text-slate-600';
+          }
+
+          var html =
+            '<article class="flex flex-col rounded-2xl border border-slate-200 bg-white p-5">' +
+              '<div class="flex items-start justify-between gap-3">' +
+                '<span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600">' +
+                  '<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+                    '<path d="m5 13 4 4L19 7" />' +
+                  '</svg>' +
+                '</span>' +
+                '<span class="rounded-full px-2.5 py-1 text-xs font-semibold ' + toneClass + '">' + esc(skill.status) + '</span>' +
+              '</div>' +
+              '<h3 class="mt-4 text-base font-semibold text-slate-900">' + esc(skill.name) + '</h3>' +
+              '<p class="mt-2 flex-1 text-sm leading-relaxed text-slate-600">' + esc(skill.description) + '</p>' +
+            '</article>';
+
+          container.insertAdjacentHTML('beforeend', html);
+        });
+      }
+
+      /** Render the project suggestions grid. */
+      function renderProjects(career) {
+        var container = document.getElementById('projectSuggestions');
+        if (!container) return;
+
+        container.textContent = '';
+
+        career.projects.forEach(function (project) {
+          var diffTone;
+          if (project.difficultyTone === 'amber') {
+            diffTone = 'bg-amber-50 text-amber-700';
+          } else if (project.difficultyTone === 'red') {
+            diffTone = 'bg-red-50 text-red-700';
+          } else {
+            diffTone = 'bg-slate-100 text-slate-700';
+          }
+
+          var chips = project.skills.map(function (s) {
+            return '<li class="rounded-md bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-700">' + esc(s) + '</li>';
+          }).join('');
+
+          var html =
+            '<article class="flex flex-col rounded-2xl border border-slate-200 bg-white p-6">' +
+              '<div class="flex flex-wrap items-center gap-2">' +
+                '<span class="rounded-full bg-indigo-50 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-indigo-700">Project suggestion</span>' +
+                '<span class="rounded-full px-3 py-1 text-xs font-semibold ' + diffTone + '">' + esc(project.difficulty) + '</span>' +
+              '</div>' +
+              '<h3 class="mt-4 text-base font-semibold text-slate-900">' + esc(project.title) + '</h3>' +
+              '<p class="mt-2 flex-1 text-sm leading-relaxed text-slate-600">' + esc(project.description) + '</p>' +
+              '<div class="mt-5">' +
+                '<h4 class="text-xs font-semibold uppercase tracking-wide text-slate-500">Skills</h4>' +
+                '<ul class="mt-2 flex flex-wrap gap-2">' + chips + '</ul>' +
+              '</div>' +
+            '</article>';
+
+          container.insertAdjacentHTML('beforeend', html);
+        });
+      }
+
+      /* =========================================================
+         4. INIT
+         ========================================================= */
+
+      function initialize() {
+        var result = readResult();
+
+        /* --- No assessment result → empty state --- */
+        if (!result || !result.primaryCareer) {
+          showEmptyState();
+          return;
+        }
+
+        /* --- Resolve the career key --- */
+        var careerKey = normalizeCareerKey(result.primaryCareer.id)
+                      || normalizeCareerKey(result.primaryCareer.name);
+
+        if (!careerKey || !CAREER_DATA[careerKey]) {
+          /* Unknown career → still show something rather than nothing. */
+          showEmptyState();
+          return;
+        }
+
+        var career = CAREER_DATA[careerKey];
+
+        /* --- Render every dynamic section --- */
+        try {
+          renderHeader(result, career);
+          renderTimeline(career);
+          renderSkills(career);
+          renderProjects(career);
+          showContent();
+        } catch (err) {
+          showEmptyState();
+        }
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initialize);
+      } else {
+        initialize();
+      }
+    })();
+  </script>
+
+</body>
+</html>

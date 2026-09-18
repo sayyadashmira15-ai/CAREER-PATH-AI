@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Career Insights — CareerPath AI</title>
+  <meta name="description" content="Explore career paths that match your interests, strengths and learning goals, with skill-gap analysis and recommended next steps." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+</head>
+
+<body class="bg-slate-50 font-sans text-slate-800 antialiased">
+
+  <!-- ================= NAVBAR ================= -->
+  <header class="sticky top-0 z-50 border-b border-slate-200 bg-white">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex h-16 items-center justify-between">
+
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center gap-2.5 rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-indigo-600">
+          <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-indigo-600 text-white">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="9" />
+              <path d="M15.6 8.4 13.5 13.5 8.4 15.6l2.1-5.1 5.1-2.1Z" />
+            </svg>
+          </span>
+          <span class="text-lg font-bold tracking-tight text-slate-900">
+            CareerPath <span class="text-indigo-600">AI</span>
+          </span>
+        </a>
+
+        <!-- Desktop nav -->
+        <nav class="hidden items-center gap-8 md:flex" aria-label="Main navigation">
+          <a href="index.html" class="text-sm font-medium text-slate-600 transition-colors hover:text-indigo-600">Home</a>
+          <a href="assesment.html" class="text-sm font-medium text-slate-600 transition-colors hover:text-indigo-600">Assesment</a>
+          <a href="dashboard.html" class="text-sm font-medium text-indigo-600 transition-colors hover:text-indigo-700" aria-current="page">My Career</a>
+          <a href="roadmap.html" class="text-sm font-medium text-slate-600 transition-colors hover:text-indigo-600">Roadmap</a>
+          <a href="counselor.html" class="text-sm font-medium text-slate-600 transition-colors hover:text-indigo-600">AI Counselor</a>
+        </nav>
+
+        <!-- Desktop CTA -->
+        <div class="hidden md:block">
+          <a href="profile.html"
+             class="inline-flex items-center justify-center rounded-lg bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-indigo-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+            Profile
+          </a>
+        </div>
+
+        <!-- Mobile menu button -->
+        <button id="menu-btn" type="button"
+                class="inline-flex items-center justify-center rounded-lg p-2 text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 md:hidden"
+                aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle navigation menu">
+          <svg id="icon-open" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
+          <svg id="icon-close" class="hidden h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6 6l12 12M18 6 6 18" />
+          </svg>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden border-t border-slate-200 bg-white md:hidden">
+      <nav class="mx-auto max-w-7xl space-y-1 px-4 py-4 sm:px-6" aria-label="Mobile navigation">
+        <a href="index.html" class="block rounded-lg px-3 py-2.5 text-base font-medium text-slate-700 hover:bg-slate-50">Home</a>
+        <a href="assesment.html" class="block rounded-lg px-3 py-2.5 text-base font-medium text-slate-700 hover:bg-slate-50">Assesment</a>
+        <a href="dashboard.html" class="block rounded-lg px-3 py-2.5 text-base font-medium text-indigo-600 hover:bg-indigo-50">My Career</a>
+        <a href="roadmap.html" class="block rounded-lg px-3 py-2.5 text-base font-medium text-slate-700 hover:bg-slate-50">Roadmap</a>
+        <a href="counselor.html" class="block rounded-lg px-3 py-2.5 text-base font-medium text-slate-700 hover:bg-slate-50">AI Counselor</a>
+        <a href="profile.html"
+           class="mt-3 flex items-center justify-center rounded-lg bg-indigo-600 px-5 py-3 text-base font-semibold text-white transition-colors hover:bg-indigo-700">
+          Profile
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- =========================================================
+         EMPTY STATE — shown by dashboard.js when no assessment exists
+         ========================================================= -->
+    <section id="empty-state" class="hidden">
+      <div class="mx-auto max-w-3xl px-4 py-20 text-center sm:px-6 sm:py-24 lg:px-8">
+
+        <div class="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-indigo-50 text-indigo-600">
+          <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="9" />
+            <path d="M15.6 8.4 13.5 13.5 8.4 15.6l2.1-5.1 5.1-2.1Z" />
+          </svg>
+        </div>
+
+        <h1 class="mt-6 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+          No career insights yet
+        </h1>
+        <p class="mx-auto mt-4 max-w-xl text-base leading-relaxed text-slate-600">
+          Please complete the career assesment first.
+        </p>
+
+        <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <a href="assesment.html"
+             class="inline-flex w-full items-center justify-center rounded-lg bg-indigo-600 px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-indigo-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 sm:w-auto">
+            Take Assesment
+          </a>
+          <a href="index.html"
+             class="inline-flex w-full items-center justify-center rounded-lg border border-slate-300 bg-white px-6 py-3.5 text-sm font-semibold text-slate-700 transition-colors hover:border-slate-400 hover:bg-slate-50 hover:text-slate-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 sm:w-auto">
+            Back to Home
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================
+         DASHBOARD CONTENT — populated by dashboard.js
+         ========================================================= -->
+    <div id="dashboard-content" class="hidden">
+
+      <!-- ================= WELCOME SECTION ================= -->
+      <section class="border-b border-slate-200 bg-white">
+        <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-14 lg:px-8">
+
+          <nav aria-label="Breadcrumb">
+            <ol class="flex items-center gap-2 text-sm text-slate-500">
+              <li><a href="index.html" class="transition-colors hover:text-indigo-600">Home</a></li>
+              <li aria-hidden="true">/</li>
+              <li class="font-medium text-slate-700" aria-current="page">My Career</li>
+            </ol>
+          </nav>
+
+          <p class="mt-5 inline-flex items-center gap-2 rounded-full border border-indigo-100 bg-indigo-50 px-3.5 py-1.5 text-sm font-semibold text-indigo-700">
+            <span id="welcome-text">Welcome, Student</span> <span aria-hidden="true">👋</span>
+          </p>
+
+          <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+            Your Career Insights
+          </h1>
+          <p class="mt-4 max-w-2xl text-base leading-relaxed text-slate-600">
+            Explore career paths that match your interests, strengths and learning goals.
+          </p>
+
+        </div>
+      </section>
+
+      <!-- ================= CAREER RECOMMENDATION ================= -->
+      <section class="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-14 lg:px-8" aria-labelledby="recommendation-heading">
+
+        <h2 id="recommendation-heading" class="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+          Your Recommended Career
+        </h2>
+
+        <!-- Primary recommendation card -->
+        <article class="mt-8 rounded-2xl border border-slate-200 bg-white p-6 sm:p-8">
+
+          <div class="grid gap-8 lg:grid-cols-3 lg:gap-10">
+
+            <!-- Career summary -->
+            <div class="lg:col-span-2">
+              <span class="inline-flex items-center gap-2 rounded-full bg-indigo-50 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-indigo-700">
+                <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="m5 13 4 4L19 7" />
+                </svg>
+                Top match
+              </span>
+
+              <h3 id="primary-career-name" class="mt-4 text-2xl font-bold tracking-tight text-slate-900">
+                —
+              </h3>
+
+              <p id="primary-career-description" class="mt-4 text-base leading-relaxed text-slate-600">
+                —
+              </p>
+
+              <!-- Why this career may suit you -->
+              <div class="mt-6 rounded-xl border border-slate-200 bg-slate-50 p-5">
+                <h4 class="text-sm font-semibold text-slate-900">Why this career may suit you</h4>
+                <ul id="primary-career-reasons" class="mt-3 space-y-2.5">
+                  <!-- populated by dashboard.js -->
+                </ul>
+              </div>
+            </div>
+
+            <!-- Match panel -->
+            <div class="rounded-xl border border-slate-200 bg-slate-50 p-6">
+              <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Assessment Match</p>
+              <p id="primary-career-match" class="mt-2 text-4xl font-extrabold tracking-tight text-indigo-600">—%</p>
+
+              <div id="primary-career-match-bar"
+                   class="mt-4 h-2 w-full overflow-hidden rounded-full bg-slate-200"
+                   role="progressbar"
+                   aria-label="Assesment match"
+                   aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                <div id="primary-career-match-bar-fill" class="h-full w-0 rounded-full bg-indigo-600"></div>
+              </div>
+
+              <dl class="mt-6 space-y-4">
+                <div>
+                  <dt class="text-xs font-semibold uppercase tracking-wide text-slate-500">Recommended career goal</dt>
+                  <dd id="match-career-goal" class="mt-1 text-sm font-medium text-slate-900">—</dd>
+                </div>
+                <div>
+                  <dt class="text-xs font-semibold uppercase tracking-wide text-slate-500">Suggested starting point</dt>
+                  <dd id="match-starting-point" class="mt-1 text-sm font-medium text-slate-900">—</dd>
+                </div>
+                <div>
+                  <dt class="text-xs font-semibold uppercase tracking-wide text-slate-500">Typical preparation time</dt>
+                  <dd id="match-prep-time" class="mt-1 text-sm font-medium text-slate-900">—</dd>
+                </div>
+                <div>
+                  <dt class="text-xs font-semibold uppercase tracking-wide text-slate-500">Your learning time</dt>
+                  <dd id="match-learning-time" class="mt-1 text-sm font-medium text-slate-900">—</dd>
+                </div>
+                <div>
+                  <dt class="text-xs font-semibold uppercase tracking-wide text-slate-500">Experience level</dt>
+                  <dd id="match-experience-level" class="mt-1 text-sm font-medium text-slate-900">—</dd>
+                </div>
+              </dl>
+            </div>
+
+          </div>
+
+          <!-- Strengths and skills to improve -->
+          <div class="mt-8 grid gap-6 border-t border-slate-200 pt-8 sm:grid-cols-2">
+
+            <!-- Strengths -->
+            <div>
+              <h4 class="flex items-center gap-2 text-sm font-semibold text-slate-900">
+                <span class="flex h-6 w-6 items-center justify-center rounded-full bg-emerald-50 text-emerald-600">
+                  <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="m5 13 4 4L19 7" />
+                  </svg>
+                </span>
+                Your strengths
+              </h4>
+              <ul id="primary-career-strengths" class="mt-4 space-y-2.5">
+                <!-- populated by dashboard.js -->
+              </ul>
+            </div>
+
+            <!-- Skills to improve -->
+            <div>
+              <h4 class="flex items-center gap-2 text-sm font-semibold text-slate-900">
+                <span class="flex h-6 w-6 items-center justify-center rounded-full bg-amber-50 text-amber-600">
+                  <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M12 8.25v4.5M12 16.5v.01" />
+                    <circle cx="12" cy="12" r="9" />
+                  </svg>
+                </span>
+                Skills to improve
+              </h4>
+              <ul id="primary-career-improvements" class="mt-4 space-y-2.5">
+                <!-- populated by dashboard.js -->
+              </ul>
+            </div>
+
+          </div>
+
+          <!-- Action + disclaimer -->
+          <div class="mt-8 flex flex-col gap-4 border-t border-slate-200 pt-8 sm:flex-row sm:items-center sm:justify-between">
+            <a href="roadmap.html"
+               class="inline-flex items-center justify-center gap-2 rounded-lg bg-indigo-600 px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-indigo-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+              View Learning Roadmap
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
+            </a>
+            <p class="max-w-md text-sm leading-relaxed text-slate-500">
+              Match percentages are indicative and based on assessment responses. They are not a guarantee of career success.
+            </p>
+          </div>
+
+        </article>
+      </section>
+
+      <!-- ================= ALTERNATIVE CAREER PATHS ================= -->
+      <section class="border-y border-slate-200 bg-white" aria-labelledby="alternatives-heading">
+        <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-14 lg:px-8">
+
+          <h2 id="alternatives-heading" class="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+            Other Career Paths to Explore
+          </h2>
+          <p class="mt-3 max-w-2xl text-base leading-relaxed text-slate-600">
+            These paths also appeared in your results. Compare them before you commit to a direction.
+          </p>
+
+          <div id="alternatives-grid" class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <!-- populated by dashboard.js -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= SKILL GAP ANALYSIS ================= -->
+      <section id="skill-gap" class="mx-auto max-w-7xl scroll-mt-20 px-4 py-12 sm:px-6 sm:py-14 lg:px-8" aria-labelledby="skill-gap-heading">
+
+        <h2 id="skill-gap-heading" class="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+          Your Skill Gap Analysis
+        </h2>
+        <p class="mt-3 max-w-2xl text-base leading-relaxed text-slate-600">
+          Understand which skills you should focus on for your selected career.
+        </p>
+
+        <div class="mt-8 grid gap-6 lg:grid-cols-3 lg:gap-8">
+
+          <!-- Skill bars -->
+          <div class="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8 lg:col-span-2">
+
+            <div class="flex flex-wrap items-center justify-between gap-3">
+              <h3 id="skill-gap-heading-text" class="text-base font-semibold text-slate-900">Current level</h3>
+            </div>
+
+            <ul id="skill-gap-list" class="mt-6 space-y-6">
+              <!-- populated by dashboard.js -->
+            </ul>
+
+          </div>
+
+          <!-- Priority skills -->
+          <aside class="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8" aria-labelledby="priority-skills-heading">
+            <h3 id="priority-skills-heading" class="text-base font-semibold text-slate-900">
+              Recommended Skills to Learn Next
+            </h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-600">
+              Focus on these in order. Each one builds on the previous skill.
+            </p>
+
+            <ol id="priority-skills-list" class="mt-6 space-y-4">
+              <!-- populated by dashboard.js -->
+            </ol>
+          </aside>
+
+        </div>
+      </section>
+
+      <!-- ================= RECOMMENDED PROJECT ================= -->
+      <section class="border-y border-slate-200 bg-white" aria-labelledby="project-heading">
+        <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-14 lg:px-8">
+
+          <h2 id="project-heading" class="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+            Suggested Project
+          </h2>
+          <p class="mt-3 max-w-2xl text-base leading-relaxed text-slate-600">
+            Applying what you learn to a small project is the fastest way to build confidence.
+          </p>
+
+          <div id="project-card-container" class="mt-8">
+            <!-- populated by dashboard.js -->
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ================= CAREER EXPLORATION CTA ================= -->
+      <section class="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+        <div class="rounded-3xl bg-indigo-600 px-6 py-12 text-center sm:px-12 sm:py-14">
+          <h2 class="text-2xl font-bold tracking-tight text-white sm:text-3xl">
+            Not sure this career is right for you?
+          </h2>
+          <p class="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-indigo-100">
+            Explore other career paths and compare the skills required for each one.
+          </p>
+          <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <a href="assesment.html"
+               class="inline-flex w-full items-center justify-center rounded-lg bg-white px-7 py-3.5 text-sm font-semibold text-indigo-700 shadow-sm transition-colors hover:bg-indigo-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:w-auto">
+              Retake Assessment
+            </a>
+            <a href="counselor.html"
+               class="inline-flex w-full items-center justify-center rounded-lg border border-indigo-400 px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:w-auto">
+              Talk to AI Counselor
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /#dashboard-content -->
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="bg-slate-900">
+    <div class="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
+
+      <div class="grid gap-10 md:grid-cols-4">
+
+        <!-- Brand -->
+        <div class="md:col-span-1">
+          <div class="flex items-center gap-2.5">
+            <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-indigo-600 text-white">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="9" />
+                <path d="M15.6 8.4 13.5 13.5 8.4 15.6l2.1-5.1 5.1-2.1Z" />
+              </svg>
+            </span>
+            <span class="text-lg font-bold tracking-tight text-white">
+              CareerPath <span class="text-indigo-400">AI</span>
+            </span>
+          </div>
+          <p class="mt-4 max-w-xs text-sm leading-relaxed text-slate-400">
+            AI-powered career guidance that helps college students choose a direction and build the skills to get there.
+          </p>
+        </div>
+
+        <!-- Platform -->
+        <div>
+          <h3 class="text-sm font-semibold text-white">Platform</h3>
+          <ul class="mt-4 space-y-3">
+            <li><a href="assesment.html" class="text-sm text-slate-400 transition-colors hover:text-white">Assessment</a></li>
+            <li><a href="dashboard.html" class="text-sm text-slate-400 transition-colors hover:text-white">My Career</a></li>
+            <li><a href="roadmap.html" class="text-sm text-slate-400 transition-colors hover:text-white">Roadmap</a></li>
+            <li><a href="counselor.html" class="text-sm text-slate-400 transition-colors hover:text-white">AI Counselor</a></li>
+          </ul>
+        </div>
+
+        <!-- Get started -->
+        <div>
+          <h3 class="text-sm font-semibold text-white">Get Started</h3>
+          <ul class="mt-4 space-y-3">
+            <li><a href="profile.html" class="text-sm text-slate-400 transition-colors hover:text-white">Create Profile</a></li>
+            <li><a href="index.html#how-it-works" class="text-sm text-slate-400 transition-colors hover:text-white">How It Works</a></li>
+            <li><a href="index.html#careers" class="text-sm text-slate-400 transition-colors hover:text-white">Career Categories</a></li>
+            <li><a href="index.html#features" class="text-sm text-slate-400 transition-colors hover:text-white">Features</a></li>
+          </ul>
+        </div>
+
+        <!-- About -->
+        <div>
+          <h3 class="text-sm font-semibold text-white">About</h3>
+          <ul class="mt-4 space-y-3">
+            <li><a href="index.html" class="text-sm text-slate-400 transition-colors hover:text-white">Home</a></li>
+            <li><a href="profile.html" class="text-sm text-slate-400 transition-colors hover:text-white">Get Started</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="mt-12 flex flex-col gap-3 border-t border-slate-800 pt-6 sm:flex-row sm:items-center sm:justify-between">
+        <p class="text-sm text-slate-500">&copy; 2025 CareerPath AI. All rights reserved.</p>
+        <p class="text-sm text-slate-500">Built for college students.</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ================= MOBILE MENU SCRIPT ================= -->
+  <script>
+    (function () {
+      var menuBtn = document.getElementById('menu-btn');
+      var mobileMenu = document.getElementById('mobile-menu');
+      var iconOpen = document.getElementById('icon-open');
+      var iconClose = document.getElementById('icon-close');
+
+      if (!menuBtn || !mobileMenu || !iconOpen || !iconClose) return;
+
+      menuBtn.addEventListener('click', function () {
+        var isOpen = !mobileMenu.classList.contains('hidden');
+
+        mobileMenu.classList.toggle('hidden');
+        iconOpen.classList.toggle('hidden', !isOpen);
+        iconClose.classList.toggle('hidden', isOpen);
+        menuBtn.setAttribute('aria-expanded', String(!isOpen));
+      });
+    })();
+  </script>
+
+  <!-- ================= DASHBOARD DYNAMIC LOGIC ================= -->
+  <script src="dashboard.js"></script>
+
+</body>
+</html>

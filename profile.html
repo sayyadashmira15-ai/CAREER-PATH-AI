@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Build Your Career Profile — CareerPath AI</title>
+  <meta name="description" content="Tell us about yourself so we can personalize your career guidance. Build your student career profile in a few minutes." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+</head>
+
+<body class="bg-slate-50 font-sans text-slate-800 antialiased">
+
+  <!-- ================= NAVBAR ================= -->
+  <header class="sticky top-0 z-50 border-b border-slate-200 bg-white">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex h-16 items-center justify-between">
+
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center gap-2.5 rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-indigo-600">
+          <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-indigo-600 text-white">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="9" />
+              <path d="M15.6 8.4 13.5 13.5 8.4 15.6l2.1-5.1 5.1-2.1Z" />
+            </svg>
+          </span>
+          <span class="text-lg font-bold tracking-tight text-slate-900">
+            CareerPath <span class="text-indigo-600">AI</span>
+          </span>
+        </a>
+
+        <!-- Desktop nav -->
+        <nav class="hidden items-center gap-8 md:flex" aria-label="Main navigation">
+          <a href="index.html" class="text-sm font-medium text-slate-600 transition-colors hover:text-indigo-600">Home</a>
+          <a href="assesment.html" class="text-sm font-medium text-slate-600 transition-colors hover:text-indigo-600">Assesment</a>
+          <a href="dashboard.html" class="text-sm font-medium text-slate-600 transition-colors hover:text-indigo-600">My Career</a>
+          <a href="roadmap.html" class="text-sm font-medium text-slate-600 transition-colors hover:text-indigo-600">Roadmap</a>
+          <a href="counselor.html" class="text-sm font-medium text-slate-600 transition-colors hover:text-indigo-600">AI Counselor</a>
+        </nav>
+
+        <!-- Desktop CTA -->
+        <div class="hidden md:block">
+          <a href="profile.html"
+             class="inline-flex items-center justify-center rounded-lg bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-indigo-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+            Get Started
+          </a>
+        </div>
+
+        <!-- Mobile menu button -->
+        <button id="menu-btn" type="button"
+                class="inline-flex items-center justify-center rounded-lg p-2 text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 md:hidden"
+                aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle navigation menu">
+          <svg id="icon-open" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
+          <svg id="icon-close" class="hidden h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6 6l12 12M18 6 6 18" />
+          </svg>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden border-t border-slate-200 bg-white md:hidden">
+      <nav class="mx-auto max-w-7xl space-y-1 px-4 py-4 sm:px-6" aria-label="Mobile navigation">
+        <a href="index.html" class="block rounded-lg px-3 py-2.5 text-base font-medium text-slate-700 hover:bg-slate-50">Home</a>
+        <a href="assesment.html" class="block rounded-lg px-3 py-2.5 text-base font-medium text-slate-700 hover:bg-slate-50">Assesment</a>
+        <a href="dashboard.html" class="block rounded-lg px-3 py-2.5 text-base font-medium text-slate-700 hover:bg-slate-50">My Career</a>
+        <a href="roadmap.html" class="block rounded-lg px-3 py-2.5 text-base font-medium text-slate-700 hover:bg-slate-50">Roadmap</a>
+        <a href="counselor.html" class="block rounded-lg px-3 py-2.5 text-base font-medium text-slate-700 hover:bg-slate-50">AI Counselor</a>
+        <a href="profile.html"
+           class="mt-3 flex items-center justify-center rounded-lg bg-indigo-600 px-5 py-3 text-base font-semibold text-white transition-colors hover:bg-indigo-700">
+          Get Started
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ================= PAGE HEADER ================= -->
+    <section class="border-b border-slate-200 bg-white">
+      <div class="mx-auto max-w-4xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+
+        <nav aria-label="Breadcrumb">
+          <ol class="flex items-center gap-2 text-sm text-slate-500">
+            <li><a href="index.html" class="transition-colors hover:text-indigo-600">Home</a></li>
+            <li aria-hidden="true">/</li>
+            <li class="font-medium text-slate-700" aria-current="page">Profile</li>
+          </ol>
+        </nav>
+
+        <h1 class="mt-5 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+          Build Your Career Profile
+        </h1>
+        <p class="mt-4 max-w-2xl text-base leading-relaxed text-slate-600">
+          Tell us about yourself so we can personalize your career guidance.
+        </p>
+
+        <!-- Step indicator -->
+        <ol class="mt-8 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm" aria-label="Progress">
+          <li class="flex items-center gap-2">
+            <span class="flex h-6 w-6 items-center justify-center rounded-full bg-indigo-600 text-xs font-bold text-white">1</span>
+            <span class="font-semibold text-indigo-700">Profile</span>
+          </li>
+          <li aria-hidden="true" class="text-slate-300">—</li>
+          <li class="flex items-center gap-2">
+            <span class="flex h-6 w-6 items-center justify-center rounded-full bg-slate-200 text-xs font-bold text-slate-600">2</span>
+            <span class="text-slate-500">Assesment</span>
+          </li>
+          <li aria-hidden="true" class="text-slate-300">—</li>
+          <li class="flex items-center gap-2">
+            <span class="flex h-6 w-6 items-center justify-center rounded-full bg-slate-200 text-xs font-bold text-slate-600">3</span>
+            <span class="text-slate-500">Results &amp; Roadmap</span>
+          </li>
+        </ol>
+
+      </div>
+    </section>
+
+    <!-- ================= FORM ================= -->
+    <form action="assesment.html" method="get" class="mx-auto max-w-4xl px-4 py-12 sm:px-6 sm:py-14 lg:px-8">
+      <div class="space-y-6">
+
+        <!-- ---------- 1. PERSONAL INFORMATION ---------- -->
+        <section class="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8" aria-labelledby="personal-heading">
+          <div class="flex items-start gap-3">
+            <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="8.25" r="3.75" />
+                <path d="M4.5 20.25a7.5 7.5 0 0 1 15 0" />
+              </svg>
+            </span>
+            <div>
+              <h2 id="personal-heading" class="text-lg font-semibold text-slate-900">Personal Information</h2>
+              <p class="mt-1 text-sm text-slate-600">Basic details about you and your current studies.</p>
+            </div>
+          </div>
+
+          <div class="mt-6 grid gap-5 sm:grid-cols-2">
+
+            <!-- Full Name -->
+            <div class="sm:col-span-2">
+              <label for="fullName" class="block text-sm font-medium text-slate-700">
+                Full Name <span class="text-red-600" aria-hidden="true">*</span>
+              </label>
+              <input type="text" id="fullName" name="fullName" required autocomplete="name"
+                     placeholder="e.g. Ananya Sharma"
+                     class="mt-1.5 block w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-900 placeholder-slate-400 shadow-sm transition-colors focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/30" />
+            </div>
+
+            <!-- Age -->
+            <div>
+              <label for="age" class="block text-sm font-medium text-slate-700">
+                Age <span class="text-red-600" aria-hidden="true">*</span>
+              </label>
+              <input type="number" id="age" name="age" required min="15" max="60" inputmode="numeric"
+                     placeholder="e.g. 20"
+                     class="mt-1.5 block w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-900 placeholder-slate-400 shadow-sm transition-colors focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/30" />
+            </div>
+
+            <!-- Education -->
+            <div>
+              <label for="education" class="block text-sm font-medium text-slate-700">
+                Education <span class="text-red-600" aria-hidden="true">*</span>
+              </label>
+              <select id="education" name="education" required
+                      class="mt-1.5 block w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-900 shadow-sm transition-colors focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/30">
+                <option value="" selected disabled>Select your education level</option>
+                <option value="High School">High School</option>
+                <option value="Diploma">Diploma</option>
+                <option value="Undergraduate">Undergraduate</option>
+                <option value="Postgraduate">Postgraduate</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <!-- College -->
+            <div class="sm:col-span-2">
+              <label for="college" class="block text-sm font-medium text-slate-700">
+                College / Institute <span class="text-red-600" aria-hidden="true">*</span>
+              </label>
+              <input type="text" id="college" name="college" required autocomplete="organization"
+                     placeholder="e.g. National Institute of Technology"
+                     class="mt-1.5 block w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-900 placeholder-slate-400 shadow-sm transition-colors focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/30" />
+            </div>
+
+            <!-- Current Year -->
+            <div>
+              <label for="currentYear" class="block text-sm font-medium text-slate-700">
+                Current Year <span class="text-red-600" aria-hidden="true">*</span>
+              </label>
+              <select id="currentYear" name="currentYear" required
+                      class="mt-1.5 block w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-900 shadow-sm transition-colors focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/30">
+                <option value="" selected disabled>Select your current year</option>
+                <option value="1st Year">1st Year</option>
+                <option value="2nd Year">2nd Year</option>
+                <option value="3rd Year">3rd Year</option>
+                <option value="4th Year">4th Year</option>
+                <option value="5th Year">5th Year</option>
+                <option value="Graduated">Graduated</option>
+              </select>
+            </div>
+
+            <!-- Branch -->
+            <div>
+              <label for="branch" class="block text-sm font-medium text-slate-700">
+                Branch / Department <span class="text-red-600" aria-hidden="true">*</span>
+              </label>
+              <input type="text" id="branch" name="branch" required
+                     placeholder="e.g. Computer Science and Engineering"
+                     class="mt-1.5 block w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-900 placeholder-slate-400 shadow-sm transition-colors focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/30" />
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ---------- 2. CURRENT SKILLS ---------- -->
+        <section class="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8" aria-labelledby="skills-heading">
+          <div class="flex items-start gap-3">
+            <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m9 7.5-4.5 4.5L9 16.5M15 7.5l4.5 4.5L15 16.5" />
+              </svg>
+            </span>
+            <div>
+              <h2 id="skills-heading" class="text-lg font-semibold text-slate-900">Current Skills</h2>
+              <p class="mt-1 text-sm text-slate-600">Select all the skills you already have. Select as many as you like.</p>
+            </div>
+          </div>
+
+          <fieldset class="mt-6">
+            <legend class="sr-only">Current Skills</legend>
+            <div class="flex flex-wrap gap-3">
+
+              <label class="cursor-pointer">
+                <input type="checkbox" name="skills" value="Python" class="peer sr-only" />
+                <span class="flex items-center justify-center rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition-colors hover:border-indigo-300 hover:bg-indigo-50 peer-checked:border-indigo-600 peer-checked:bg-indigo-600 peer-checked:text-white peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-indigo-600">Python</span>
+              </label>
+
+              <label class="cursor-pointer">
+                <input type="checkbox" name="skills" value="C/C++" class="peer sr-only" />
+                <span class="flex items-center justify-center rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition-colors hover:border-indigo-300 hover:bg-indigo-50 peer-checked:border-indigo-600 peer-checked:bg-indigo-600 peer-checked:text-white peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-indigo-600">C/C++</span>
+              </label>
+
+              <label class="cursor-pointer">
+                <input type="checkbox" name="skills" value="Java" class="peer sr-only" />
+                <span class="flex items-center justify-center rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition-colors hover:border-indigo-300 hover:bg-indigo-50 peer-checked:border-indigo-600 peer-checked:bg-indigo-600 peer-checked:text-white peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-indigo-600">Java</span>
+              </label>
+
+              <label class="cursor-pointer">
+                <input type="checkbox" name="skills" value="JavaScript" class="peer sr-only" />
+                <span class="flex items-center justify-center rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition-colors hover:border-indigo-300 hover:bg-indigo-50 peer-checked:border-indigo-600 peer-checked:bg-indigo-600 peer-checked:text-white peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-indigo-600">JavaScript</span>
+              </label>
+
+              <label class="cursor-pointer">
+                <input type="checkbox" name="skills" value="HTML/CSS" class="peer sr-only" />
+                <span class="flex items-center justify-center rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition-colors hover:border-indigo-300 hover:bg-indigo-50 peer-checked:border-indigo-600 peer-checked:bg-indigo-600 peer-checked:text-white peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-indigo-600">HTML/CSS</span>
+              </label>
+
+              <label class="cursor-pointer">
+                <input type="checkbox" name="skills" value="SQL" class="peer sr-only" />
+                <span class="flex items-center justify-center rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition-colors hover:border-indigo-300 hover:bg-indigo-50 peer-checked:border-indigo-600 peer-checked:bg-indigo-600 peer-checked:text-white peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-indigo-600">SQL</span>
+              </label>
+
+              <label class="cursor-pointer">
+                <input type="checkbox" name="skills" value="React" class="peer sr-only" />
+                <span class="flex items-center justify-center rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition-colors hover:border-indigo-300 hover:bg-indigo-50 peer-checked:border-indigo-600 peer-checked:bg-indigo-600 peer-checked:text-white peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-indigo-600">React</span>
+              </label>
+
+              <label class="cursor-pointer">
+                <input type="checkbox" name="skills" value="Machine Learning" class="peer sr-only" />
+                <span class="flex items-center justify-center rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition-colors hover:border-indigo-300 hover:bg-indigo-50 peer-checked:border-indigo-600 peer-checked:bg-indigo-600 peer-checked:text-white peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-indigo-600">Machine Learning</span>
+              </label>
+
+              <label class="cursor-pointer">
+                <input type="checkbox" name="skills" value="Data Analysis" class="peer sr-only" />
+                <span class="flex items-center justify-center rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition-colors hover:border-indigo-300 hover:bg-indigo-50 peer-checked:border-indigo-600 peer-checked:bg-indigo-600 peer-checked:text-white peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-indigo-600">Data Analysis</span>
+              </label>
+
+              <label class="cursor-pointer">
+                <input type="checkbox" name="skills" value="Cloud" class="peer sr-only" />
+                <span class="flex items-center justify-center rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition-colors hover:border-indigo-300 hover:bg-indigo-50 peer-checked:border-indigo-600 peer-checked:bg-indigo-600 peer-checked:text-white peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-indigo-600">Cloud</span>
+              </label>
+
+              <label class="cursor-pointer">
+                <input type="checkbox" name="skills" value="Cyber Security" class="peer sr-only" />
+                <span class="flex items-center justify-center rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition-colors hover:border-indigo-300 hover:bg-indigo-50 peer-checked:border-indigo-600 peer-checked:bg-indigo-600 peer-checked:text-white peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-indigo-600">Cyber Security</span>
+              </label>
+
+              <label class="cursor-pointer">
+                <input type="checkbox" name="skills" value="UI/UX" class="peer sr-only" />
+                <span class="flex items-center justify-center rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition-colors hover:border-indigo-300 hover:bg-indigo-50 peer-checked:border-indigo-600 peer-checked:bg-indigo-600 peer-checked:text-white peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-indigo-600">UI/UX</span>
+              </label>
+
+            </div>
+          </fieldset>
+        </section>
+
+        <!-- ---------- 3. INTERESTS ---------- -->
+        <section class="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8" aria-labelledby="interests-heading">
+          <div class="flex items-start gap-3">
+            <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 20.25s-7.5-4.35-7.5-9.6a4.35 4.35 0 0 1 7.5-3.02 4.35 4.35 0 0 1 7.5 3.02c0 5.25-7.5 9.6-7.5 9.6Z" />
+              </svg>
+            </span>
+            <div>
+              <h2 id="interests-heading" class="text-lg font-semibold text-slate-900">Interests</h2>
+              <p class="mt-1 text-sm text-slate-600">Pick the areas that genuinely excite you. Select as many as you like.</p>
+            </div>
+          </div>
+
+          <fieldset class="mt-6">
+            <legend class="sr-only">Interests</legend>
+            <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+
+              <!-- AI -->
+              <label class="group relative flex cursor-pointer flex-col rounded-2xl border border-slate-200 bg-white p-5 transition-colors hover:border-indigo-300 hover:bg-indigo-50/40 has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50">
+                <input type="checkbox" name="interests" value="Artificial Intelligence" class="sr-only" />
+                <span class="flex items-center gap-3">
+                  <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-slate-100 text-slate-600 transition-colors group-has-[:checked]:bg-indigo-600 group-has-[:checked]:text-white">
+                    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M11 3.75 12.6 8.1 17 9.75l-4.4 1.65L11 15.75 9.4 11.4 5 9.75l4.4-1.65L11 3.75Z" />
+                      <path d="m17.75 15 .7 1.9 1.9.7-1.9.7-.7 1.9-.7-1.9-1.9-.7 1.9-.7.7-1.9Z" />
+                    </svg>
+                  </span>
+                  <span class="text-sm font-semibold text-slate-900">Artificial Intelligence</span>
+                </span>
+                <span class="mt-3 text-sm leading-relaxed text-slate-600">Machine learning and intelligent systems.</span>
+              </label>
+
+              <!-- Web Development -->
+              <label class="group relative flex cursor-pointer flex-col rounded-2xl border border-slate-200 bg-white p-5 transition-colors hover:border-indigo-300 hover:bg-indigo-50/40 has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50">
+                <input type="checkbox" name="interests" value="Web Development" class="sr-only" />
+                <span class="flex items-center gap-3">
+                  <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-slate-100 text-slate-600 transition-colors group-has-[:checked]:bg-indigo-600 group-has-[:checked]:text-white">
+                    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="m9 7.5-4.5 4.5L9 16.5M15 7.5l4.5 4.5L15 16.5" />
+                    </svg>
+                  </span>
+                  <span class="text-sm font-semibold text-slate-900">Web Development</span>
+                </span>
+                <span class="mt-3 text-sm leading-relaxed text-slate-600">Websites and web applications.</span>
+              </label>
+
+              <!-- Data Science -->
+              <label class="group relative flex cursor-pointer flex-col rounded-2xl border border-slate-200 bg-white p-5 transition-colors hover:border-indigo-300 hover:bg-indigo-50/40 has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50">
+                <input type="checkbox" name="interests" value="Data Science" class="sr-only" />
+                <span class="flex items-center gap-3">
+                  <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-slate-100 text-slate-600 transition-colors group-has-[:checked]:bg-indigo-600 group-has-[:checked]:text-white">
+                    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M4 20h16" />
+                      <path d="M7.5 20v-6M12 20V7.5M16.5 20v-9" />
+                    </svg>
+                  </span>
+                  <span class="text-sm font-semibold text-slate-900">Data Science</span>
+                </span>
+                <span class="mt-3 text-sm leading-relaxed text-slate-600">Data analysis and insights.</span>
+              </label>
+
+              <!-- Cyber Security -->
+              <label class="group relative flex cursor-pointer flex-col rounded-2xl border border-slate-200 bg-white p-5 transition-colors hover:border-indigo-300 hover:bg-indigo-50/40 has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50">
+                <input type="checkbox" name="interests" value="Cyber Security" class="sr-only" />
+                <span class="flex items-center gap-3">
+                  <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-slate-100 text-slate-600 transition-colors group-has-[:checked]:bg-indigo-600 group-has-[:checked]:text-white">
+                    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M12 3 5 5.75v5.5c0 4.2 2.9 7.6 7 9.75 4.1-2.15 7-5.55 7-9.75v-5.5L12 3Z" />
+                      <path d="m9.5 12 1.75 1.75L15 10" />
+                    </svg>
+                  </span>
+                  <span class="text-sm font-semibold text-slate-900">Cyber Security</span>
+                </span>
+                <span class="mt-3 text-sm leading-relaxed text-slate-600">Protecting systems and data.</span>
+              </label>
+
+              <!-- Cloud Computing -->
+              <label class="group relative flex cursor-pointer flex-col rounded-2xl border border-slate-200 bg-white p-5 transition-colors hover:border-indigo-300 hover:bg-indigo-50/40 has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50">
+                <input type="checkbox" name="interests" value="Cloud Computing" class="sr-only" />
+                <span class="flex items-center gap-3">
+                  <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-slate-100 text-slate-600 transition-colors group-has-[:checked]:bg-indigo-600 group-has-[:checked]:text-white">
+                    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M7.5 18.75h9a4.5 4.5 0 0 0 .6-8.96A6 6 0 0 0 6 10.6a4.075 4.075 0 0 0 1.5 8.15Z" />
+                    </svg>
+                  </span>
+                  <span class="text-sm font-semibold text-slate-900">Cloud Computing</span>
+                </span>
+                <span class="mt-3 text-sm leading-relaxed text-slate-600">Cloud platforms and infrastructure.</span>
+              </label>
+
+              <!-- Software Development -->
+              <label class="group relative flex cursor-pointer flex-col rounded-2xl border border-slate-200 bg-white p-5 transition-colors hover:border-indigo-300 hover:bg-indigo-50/40 has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50">
+                <input type="checkbox" name="interests" value="Software Development" class="sr-only" />
+                <span class="flex items-center gap-3">
+                  <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-slate-100 text-slate-600 transition-colors group-has-[:checked]:bg-indigo-600 group-has-[:checked]:text-white">
+                    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <rect x="3.75" y="4.5" width="16.5" height="15" rx="2" />
+                      <path d="M7.5 9h3M7.5 12.75h6" />
+                    </svg>
+                  </span>
+                  <span class="text-sm font-semibold text-slate-900">Software Development</span>
+                </span>
+                <span class="mt-3 text-sm leading-relaxed text-slate-600">Building software products and tools.</span>
+              </label>
+
+              <!-- UI/UX Design -->
+              <label class="group relative flex cursor-pointer flex-col rounded-2xl border border-slate-200 bg-white p-5 transition-colors hover:border-indigo-300 hover:bg-indigo-50/40 has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50">
+                <input type="checkbox" name="interests" value="UI/UX Design" class="sr-only" />
+                <span class="flex items-center gap-3">
+                  <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-slate-100 text-slate-600 transition-colors group-has-[:checked]:bg-indigo-600 group-has-[:checked]:text-white">
+                    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <rect x="3.75" y="4.5" width="16.5" height="15" rx="2" />
+                      <path d="M3.75 9.75h16.5M9.75 9.75v9.75" />
+                    </svg>
+                  </span>
+                  <span class="text-sm font-semibold text-slate-900">UI/UX Design</span>
+                </span>
+                <span class="mt-3 text-sm leading-relaxed text-slate-600">Designing usable digital experiences.</span>
+              </label>
+
+            </div>
+          </fieldset>
+        </section>
+
+        <!-- ---------- 4. CAREER PREFERENCES ---------- -->
+        <section class="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8" aria-labelledby="preferences-heading">
+          <div class="flex items-start gap-3">
+            <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="9" />
+                <path d="M15.6 8.4 13.5 13.5 8.4 15.6l2.1-5.1 5.1-2.1Z" />
+              </svg>
+            </span>
+            <div>
+              <h2 id="preferences-heading" class="text-lg font-semibold text-slate-900">Career Preferences</h2>
+              <p class="mt-1 text-sm text-slate-600">This helps us match you with the right career tracks.</p>
+            </div>
+          </div>
+
+          <div class="mt-6 grid gap-5 sm:grid-cols-2">
+
+            <!-- Career goal -->
+            <div class="sm:col-span-2">
+              <label for="careerGoal" class="block text-sm font-medium text-slate-700">
+                Preferred career goal <span class="text-red-600" aria-hidden="true">*</span>
+              </label>
+              <select id="careerGoal" name="careerGoal" required
+                      class="mt-1.5 block w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-900 shadow-sm transition-colors focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/30">
+                <option value="" selected disabled>Select your preferred career goal</option>
+                <option value="AI / ML Engineer">AI / ML Engineer</option>
+                <option value="Full Stack Developer">Full Stack Developer</option>
+                <option value="Data Scientist">Data Scientist</option>
+                <option value="Cyber Security Analyst">Cyber Security Analyst</option>
+                <option value="Cloud Engineer">Cloud Engineer</option>
+                <option value="UI/UX Designer">UI/UX Designer</option>
+                <option value="Software Engineer">Software Engineer</option>
+                <option value="Not sure yet">Not sure yet</option>
+              </select>
+            </div>
+
+            <!-- Daily learning time -->
+            <div>
+              <label for="learningTime" class="block text-sm font-medium text-slate-700">
+                Daily learning time <span class="text-red-600" aria-hidden="true">*</span>
+              </label>
+              <select id="learningTime" name="learningTime" required
+                      class="mt-1.5 block w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-900 shadow-sm transition-colors focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/30">
+                <option value="" selected disabled>Select how much time you can give</option>
+                <option value="Less than 1 hour">Less than 1 hour</option>
+                <option value="1–2 hours">1–2 hours</option>
+                <option value="2–4 hours">2–4 hours</option>
+                <option value="More than 4 hours">More than 4 hours</option>
+              </select>
+            </div>
+
+            <!-- Work style -->
+            <div>
+              <label for="workStyle" class="block text-sm font-medium text-slate-700">
+                Preferred work style <span class="text-red-600" aria-hidden="true">*</span>
+              </label>
+              <select id="workStyle" name="workStyle" required
+                      class="mt-1.5 block w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-900 shadow-sm transition-colors focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/30">
+                <option value="" selected disabled>Select your preferred work style</option>
+                <option value="Remote">Remote</option>
+                <option value="Hybrid">Hybrid</option>
+                <option value="On-site">On-site</option>
+                <option value="Flexible">Flexible</option>
+              </select>
+            </div>
+
+            <!-- Experience level -->
+            <div class="sm:col-span-2">
+              <label for="experienceLevel" class="block text-sm font-medium text-slate-700">
+                Experience level <span class="text-red-600" aria-hidden="true">*</span>
+              </label>
+              <select id="experienceLevel" name="experienceLevel" required
+                      class="mt-1.5 block w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-900 shadow-sm transition-colors focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/30">
+                <option value="" selected disabled>Select your experience level</option>
+                <option value="Beginner">Beginner — just starting out</option>
+                <option value="Intermediate">Intermediate — some projects done</option>
+                <option value="Advanced">Advanced — internships or strong portfolio</option>
+              </select>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ---------- 5. GOALS ---------- -->
+        <section class="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8" aria-labelledby="goals-heading">
+          <div class="flex items-start gap-3">
+            <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="9" />
+                <circle cx="12" cy="12" r="4.5" />
+                <circle cx="12" cy="12" r="1" />
+              </svg>
+            </span>
+            <div>
+              <h2 id="goals-heading" class="text-lg font-semibold text-slate-900">Goals</h2>
+              <p class="mt-1 text-sm text-slate-600">Write freely — the more specific you are, the better your roadmap will be.</p>
+            </div>
+          </div>
+
+          <div class="mt-6">
+            <label for="goals" class="block text-sm font-medium text-slate-700">
+              What do you want to achieve in your career? <span class="text-red-600" aria-hidden="true">*</span>
+            </label>
+            <textarea id="goals" name="goals" rows="5" required
+                      placeholder="For example: I want to become a full stack developer within two years, build three solid projects, and land an internship at a product company."
+                      class="mt-1.5 block w-full resize-y rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm leading-relaxed text-slate-900 placeholder-slate-400 shadow-sm transition-colors focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/30"></textarea>
+          </div>
+        </section>
+
+        <!-- ---------- ACTIONS ---------- -->
+        <div class="flex flex-col-reverse gap-3 sm:flex-row sm:items-center sm:justify-between">
+
+          <a href="index.html"
+             class="inline-flex items-center justify-center rounded-lg border border-slate-300 bg-white px-6 py-3.5 text-sm font-semibold text-slate-700 transition-colors hover:border-slate-400 hover:bg-slate-50 hover:text-slate-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+            Back to Home
+          </a>
+
+          <button type="submit"
+                  class="inline-flex items-center justify-center gap-2 rounded-lg bg-indigo-600 px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-indigo-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+            Continue to Assesment
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M5 12h14M13 6l6 6-6 6" />
+            </svg>
+          </button>
+
+        </div>
+
+        <p class="text-center text-sm text-slate-500 sm:text-left">
+          Your details are used only to personalize your career guidance. You can update them later.
+        </p>
+
+      </div>
+    </form>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="bg-slate-900">
+    <div class="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
+
+      <div class="grid gap-10 md:grid-cols-4">
+
+        <!-- Brand -->
+        <div class="md:col-span-1">
+          <div class="flex items-center gap-2.5">
+            <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-indigo-600 text-white">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="9" />
+                <path d="M15.6 8.4 13.5 13.5 8.4 15.6l2.1-5.1 5.1-2.1Z" />
+              </svg>
+            </span>
+            <span class="text-lg font-bold tracking-tight text-white">
+              CareerPath <span class="text-indigo-400">AI</span>
+            </span>
+          </div>
+          <p class="mt-4 max-w-xs text-sm leading-relaxed text-slate-400">
+            AI-powered career guidance that helps college students choose a direction and build the skills to get there.
+          </p>
+        </div>
+
+        <!-- Platform -->
+        <div>
+          <h3 class="text-sm font-semibold text-white">Platform</h3>
+          <ul class="mt-4 space-y-3">
+            <li><a href="assesment.html" class="text-sm text-slate-400 transition-colors hover:text-white">Assesment</a></li>
+            <li><a href="dashboard.html" class="text-sm text-slate-400 transition-colors hover:text-white">My Career</a></li>
+            <li><a href="roadmap.html" class="text-sm text-slate-400 transition-colors hover:text-white">Roadmap</a></li>
+            <li><a href="counselor.html" class="text-sm text-slate-400 transition-colors hover:text-white">AI Counselor</a></li>
+          </ul>
+        </div>
+
+        <!-- Get started -->
+        <div>
+          <h3 class="text-sm font-semibold text-white">Get Started</h3>
+          <ul class="mt-4 space-y-3">
+            <li><a href="profile.html" class="text-sm text-slate-400 transition-colors hover:text-white">Create Profile</a></li>
+            <li><a href="index.html#how-it-works" class="text-sm text-slate-400 transition-colors hover:text-white">How It Works</a></li>
+            <li><a href="index.html#careers" class="text-sm text-slate-400 transition-colors hover:text-white">Career Categories</a></li>
+            <li><a href="index.html#features" class="text-sm text-slate-400 transition-colors hover:text-white">Features</a></li>
+          </ul>
+        </div>
+
+        <!-- About -->
+        <div>
+          <h3 class="text-sm font-semibold text-white">About</h3>
+          <ul class="mt-4 space-y-3">
+            <li><a href="index.html" class="text-sm text-slate-400 transition-colors hover:text-white">Home</a></li>
+            <li><a href="profile.html" class="text-sm text-slate-400 transition-colors hover:text-white">Get Started</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="mt-12 flex flex-col gap-3 border-t border-slate-800 pt-6 sm:flex-row sm:items-center sm:justify-between">
+        <p class="text-sm text-slate-500">&copy; 2025 CareerPath AI. All rights reserved.</p>
+        <p class="text-sm text-slate-500">Built for college students.</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ================= MOBILE MENU SCRIPT ================= -->
+  <script>
+    (function () {
+      var menuBtn = document.getElementById('menu-btn');
+      var mobileMenu = document.getElementById('mobile-menu');
+      var iconOpen = document.getElementById('icon-open');
+      var iconClose = document.getElementById('icon-close');
+
+      menuBtn.addEventListener('click', function () {
+        var isOpen = !mobileMenu.classList.contains('hidden');
+
+        mobileMenu.classList.toggle('hidden');
+        iconOpen.classList.toggle('hidden', !isOpen);
+        iconClose.classList.toggle('hidden', isOpen);
+        menuBtn.setAttribute('aria-expanded', String(!isOpen));
+      });
+    })();
+  </script>
+
+</body>
+</html>
