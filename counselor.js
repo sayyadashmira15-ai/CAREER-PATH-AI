@@ -34,7 +34,7 @@
      1. CONFIGURATION
      ========================================================= */
 
-  var API_URL = 'http://127.0.0.1:8000/chat';
+  var API_URL = '/chat';
   var MAX_LENGTH = 1000;
   var REQUEST_TIMEOUT_MS = 45000;
 
