@@ -39,7 +39,8 @@ from typing import Any, Dict, List
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from huggingface_hub import InferenceClient
+from google import genai
+from google.genai import types
 from pydantic import BaseModel, Field
 
 
@@ -60,8 +61,19 @@ logger = logging.getLogger("careerpath-ai")
 # =====================================================================
 
 # Read the Hugging Face token from the environment. Never hardcode it.
-HF_TOKEN = os.getenv("HF_TOKEN")
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+GEMINI_MODEL = "gemini-flash-latest"
 
+gemini_client = None
+
+if GEMINI_API_KEY:
+    try:
+        gemini_client = genai.Client(api_key=GEMINI_API_KEY)
+        logger.info("Gemini client initialised.")
+    except Exception as exc:
+        logger.error("Failed to initialise Gemini client: %s", exc)
+else:
+    logger.warning("GEMINI_API_KEY is not set.")
 # The DeepSeek model served through Hugging Face Inference Providers.
 HF_MODEL = "deepseek-ai/DeepSeek-V4.1-Flash"
 
@@ -110,28 +122,18 @@ app.add_middleware(
 
 
 # =====================================================================
-# 5. HUGGING FACE CLIENT
+# 5. gemini
 # =====================================================================
 # The client is created once at startup. If the token is missing, we
 # leave the client as None and `/chat` returns a clear configuration
 # error instead of crashing.
 
-hf_client: InferenceClient | None = None
+# 5. GEMINI CLIENT
 
-if HF_TOKEN:
-    try:
-        hf_client = InferenceClient(
-            provider="auto",
-            api_key=HF_TOKEN,
-        )
-        logger.info("Hugging Face InferenceClient initialised (model=%s).", HF_MODEL)
-    except Exception as exc:  # noqa: BLE001
-        logger.error("Failed to initialise InferenceClient: %s", exc)
-        hf_client = None
+if GEMINI_API_KEY and gemini_client is not None:
+    logger.info("Gemini client is ready.")
 else:
-    logger.warning("HF_TOKEN is not set — /chat will return a configuration error.")
-
-
+    logger.warning("GEMINI_API_KEY is missing or Gemini client failed to initialize.")
 # =====================================================================
 # 6. REQUEST / RESPONSE MODELS
 # =====================================================================
@@ -324,98 +326,76 @@ def health_check() -> Dict[str, str]:
 # 12. CHAT ENDPOINT — REAL HUGGING FACE CALL
 # =====================================================================
 
+
+# 12. CHAT ENDPOINT — GEMINI
+
 @app.post("/chat", response_model=ChatResponse)
 def chat(request: ChatRequest) -> ChatResponse:
-    """
-    Receive a student's question, send it to the Hugging Face model,
-    and return the AI counselor's reply.
-
-    This endpoint makes a REAL Hugging Face Inference Providers request.
-    There is no placeholder or mock response.
-    """
-
-    # --- 12.1 Configuration check ----------------------------------
-    if not HF_TOKEN or hf_client is None:
-        logger.error("Rejected /chat request: HF_TOKEN is missing or client failed to initialise.")
+    if not GEMINI_API_KEY or gemini_client is None:
         raise HTTPException(
             status_code=503,
-            detail=(
-                "The AI counselor is not configured on the server. "
-                "Please set the HF_TOKEN environment variable and restart the backend."
-            ),
+            detail="Gemini API is not configured. Check GEMINI_API_KEY in Render."
         )
 
-    # --- 12.2 Input validation -------------------------------------
     message = (request.message or "").strip()
 
     if not message:
-        raise HTTPException(
-            status_code=400,
-            detail="Message cannot be empty.",
-        )
+        raise HTTPException(status_code=400, detail="Message cannot be empty.")
 
     if len(message) > MAX_MESSAGE_LENGTH:
         raise HTTPException(
             status_code=400,
-            detail=(
-                f"Message is too long. "
-                f"Please keep it under {MAX_MESSAGE_LENGTH} characters."
+            detail=f"Message is too long. Maximum {MAX_MESSAGE_LENGTH} characters."
+        )
+
+    try:
+        messages = build_messages(request)
+
+        # Convert chat history into a text conversation for Gemini.
+        conversation = []
+        for item in messages:
+            role = item["role"]
+            content = item["content"]
+
+            if role == "system":
+                continue
+
+            label = "Student" if role == "user" else "CareerPath AI"
+            conversation.append(f"{label}: {content}")
+
+        system_content = messages[0]["content"]
+
+        result = gemini_client.models.generate_content(
+            model=GEMINI_MODEL,
+            contents="\n\n".join(conversation),
+            config=types.GenerateContentConfig(
+                system_instruction=system_content,
+                max_output_tokens=MAX_TOKENS,
+                temperature=TEMPERATURE,
+                top_p=TOP_P,
             ),
         )
 
-    # --- 12.3 Build the conversation -------------------------------
-    try:
-        messages = build_messages(request)
-    except Exception as exc:  # noqa: BLE001
-        logger.exception("Failed to build messages: %s", exc)
-        raise HTTPException(
-            status_code=400,
-            detail="The request could not be processed. Please check the message format.",
-        )
-
-    # --- 12.4 Call the Hugging Face model --------------------------
-    try:
-        logger.info(
-            "Calling Hugging Face model '%s' with %d message(s).",
-            HF_MODEL,
-            len(messages),
-        )
-
-        completion = hf_client.chat.completions.create(
-            model=HF_MODEL,
-            messages=messages,
-            max_tokens=MAX_TOKENS,
-            temperature=TEMPERATURE,
-            top_p=TOP_P,
-        )
-
-        reply = extract_assistant_text(completion)
+        reply = (result.text or "").strip()
 
         if not reply:
-            logger.warning("Hugging Face returned an empty completion.")
             raise HTTPException(
                 status_code=502,
-                detail="The AI counselor returned an empty response. Please try again.",
+                detail="Gemini returned an empty response. Please try again."
             )
 
-        logger.info("Hugging Face reply received (%d characters).", len(reply))
+        logger.info("Gemini reply received (%d characters).", len(reply))
         return ChatResponse(response=reply)
 
     except HTTPException:
-        # Re-raise HTTP exceptions we deliberately created.
         raise
-
-    except Exception as exc:  # noqa: BLE001
-        # Log the real error server-side, but never expose tokens or
-        # stack traces to the frontend.
-        logger.exception("Hugging Face request failed: %s", exc)
+    except Exception as exc:
+        logger.exception("Gemini request failed: %s", exc)
         raise HTTPException(
             status_code=502,
-            detail=(
-                "The AI counselor is temporarily unavailable. "
-                "Please try again in a moment."
-            ),
+            detail="The AI counselor is temporarily unavailable. Please try again."
         )
+
 
 
 # =====================================================================
