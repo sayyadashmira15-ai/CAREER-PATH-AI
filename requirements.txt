@@ -1,7 +1,4 @@
 fastapi
 uvicorn
-<<<<<<< HEAD
 google-genai
-=======
-google-genai
->>>>>>> 60d5f39d9714dc68c88a5995456c3c2689869b0a
+
