@@ -62,7 +62,7 @@ logger = logging.getLogger("careerpath-ai")
 
 # Read the Hugging Face token from the environment. Never hardcode it.
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
-GEMINI_MODEL = "gemini-2.5-flash"
+GEMINI_MODEL = "gemini-3.8-flash"
 gemini_client = None
 
 if GEMINI_API_KEY:
